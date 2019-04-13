@@ -28,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @DisplayNameGeneration(DateTimeKataDisplayNames.class)
 @DisplayName("Instant And Date Interoperability")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class STest1InstantAndDateInterop {
+public class STest1InstantAndDateInteropTest {
 
     private Date classicDate;
     private SimpleDateFormat classicDateFormatter = new SimpleDateFormat("YYYY-MM-dd'T'HH:mm:ss.SSS'Z'");
@@ -43,12 +43,12 @@ public class STest1InstantAndDateInterop {
     @Order(1)
     public void verifyInstantAndDateHaveSameEpochMilliseconds() {
 
-        // TODO: Replace with an Instant generated from a Date
+        // TODO: Create an Instant generated from a Date
         //  Use a Date API that converts Date instances into Instant instances.
         //  Check: java.util.Date.toInstant()
         Instant instant = classicDate.toInstant();
 
-        // TODO: Fix the "null" below to get milliseconds from epoch from the Instant
+        // TODO: Replace the "null" below to get milliseconds from epoch from the Instant
         //  Use an Instant API which converts it into milliseconds
         //  Check: java.time.Instant.toEpochMilli()
         assertEquals(Long.valueOf(classicDate.getTime()),
