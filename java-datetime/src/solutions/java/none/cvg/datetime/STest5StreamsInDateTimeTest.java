@@ -144,7 +144,9 @@ public class STest5StreamsInDateTimeTest {
         //  Orders placed on Monday, Tuesday and Wednesday ship 2 business days later.
         //  Orders placed on Thursday ship on the next Monday.
         //  Orders places on Friday, Saturday and Sunday ship on the next Tuesday.
-        //  HINT: use the ordinals or values from the DayOfWeek enum for simplicity.
+        //  =>
+        //  HINT: use the zero-based ordinal() or one-based getValue() from the DayOfWeek
+        //        enum for simplicity.
         TemporalAdjuster tPlusTwoBusinessDates = temporal -> {
             LocalDate localDate = LocalDate.from(temporal);
             DayOfWeek dayOfWeek = localDate.getDayOfWeek();
@@ -169,12 +171,6 @@ public class STest5StreamsInDateTimeTest {
 
         Map<LocalDate, LocalDate> shippingDateMap = sampleShippingDates.stream()
                 .collect(Collectors.toMap(each -> each, each -> each.with(tPlusTwoBusinessDates)));
-
-        assertTrue(shippingDateMap
-                        .values()
-                        .stream()
-                        .noneMatch(localDate1 -> localDate1.getDayOfWeek().getValue() > 5),
-                "No weekend shipping");
 
         assertEquals(DayOfWeek.WEDNESDAY,
                 shippingDateMap
@@ -217,6 +213,12 @@ public class STest5StreamsInDateTimeTest {
                         .get(localDate.with(TemporalAdjusters.next(DayOfWeek.SUNDAY)))
                         .getDayOfWeek(),
                 "Items purchased on Sunday should ship on the following Tuesday");
+
+        assertTrue(shippingDateMap
+                        .values()
+                        .stream()
+                        .noneMatch(localDate1 -> localDate1.getDayOfWeek().getValue() > 5),
+                "No weekend shipping");
 
     }
 
