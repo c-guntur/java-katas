@@ -21,7 +21,6 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * DateTime in Streams.
@@ -46,7 +45,7 @@ public class Test5StreamsInDateTimeTest {
         LocalDate tOJDate = LocalDate.of(1997, 8, 29);
 
 
-        // TODO: Fix the actual to render the "first day of the month".
+        // TODO: Fix the 'actual' param of the assert to render the "first day of the month".
         //  Check TemporalAdjusters for the right methods.
         //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         assertEquals("1997-08-01",
@@ -54,7 +53,7 @@ public class Test5StreamsInDateTimeTest {
                 "First Day Of The Month should be 1997-08-01, 28 days before the date");
 
 
-        // TODO: Fix the actual to render the "last day of the month".
+        // TODO: Fix the 'actual' param of the assert to render the "last day of the month".
         //  Check TemporalAdjusters for the right methods.
         //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         assertEquals(tOJDate.plusDays(2),
@@ -62,7 +61,7 @@ public class Test5StreamsInDateTimeTest {
                 "Last Day Of The Month should be 1997-08-31, 2 days after the date");
 
 
-        // TODO: Fix the actual to render the "first day of next month".
+        // TODO: Fix the 'actual' param of the assert to render the "first day of next month".
         //  Check TemporalAdjusters for the right methods.
         //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         assertEquals("1997-09-01",
@@ -70,7 +69,7 @@ public class Test5StreamsInDateTimeTest {
                 "First Day Of Next Month should be 1997-09-01, 3 days after the date");
 
 
-        // TODO: Fix the actual to render the "next Wednesday after the date".
+        // TODO: Fix the 'actual' param of the assert to render the "next Wednesday after the date".
         //  Check TemporalAdjusters for the right methods.
         //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         assertEquals(tOJDate.plusDays(5),
@@ -90,7 +89,7 @@ public class Test5StreamsInDateTimeTest {
                 "First Day Of Next Year should be 1998-01-01");
 
 
-        // TODO: Fix the actual to render the "first day of year".
+        // TODO: Fix the 'actual' param of the assert to render the "first day of year".
         //  Check TemporalAdjusters for the right methods.
         //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         assertEquals(nextYearDate.minusDays(365),
@@ -108,7 +107,9 @@ public class Test5StreamsInDateTimeTest {
             // TODO: Add a localDate manipulation that returns
             //  either the next sunday after current date
             //  it is a or current date, if Sunday.
-            //localDate = localDate.???(TemporalAdjusters.nextOrSame(???));
+            //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
+            //  Check: java.time.temporal.TemporalAdjusters.nextOrSame(DayOfWeek)
+            // HINT: localDate = localDate.???(TemporalAdjusters.nextOrSame(???));
             return temporal.with(localDate);
         };
 
@@ -118,6 +119,7 @@ public class Test5StreamsInDateTimeTest {
                 LocalDate.of(2015, 1, 4));
 
         // TODO: Fix the list mapping below.
+        //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         List<LocalDate> collectSundays = someDates
                 .map(each -> each)
                 .collect(Collectors.toList());
@@ -149,16 +151,7 @@ public class Test5StreamsInDateTimeTest {
         //        enum for simplicity.
         TemporalAdjuster tPlusTwoBusinessDates = temporal -> {
             LocalDate localDate = LocalDate.from(temporal);
-            int dayOfWeekValue = localDate.getDayOfWeek().ordinal();
-            if(dayOfWeekValue < 3) {
-                localDate = localDate.plusDays(2);
-            } else {
-                if(dayOfWeekValue == 3) {
-                    localDate = localDate.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
-                } else {
-                    localDate = localDate.with(TemporalAdjusters.next(DayOfWeek.TUESDAY));
-                }
-            }
+            localDate = localDate.plusDays(2);
             return temporal.with(localDate);
         };
 

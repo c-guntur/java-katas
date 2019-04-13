@@ -21,7 +21,6 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * DateTime in Streams.
@@ -108,6 +107,8 @@ public class STest5StreamsInDateTimeTest {
             // TODO: Add a localDate manipulation that returns
             //  either the next sunday after current date
             //  it is a or current date, if Sunday.
+            //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
+            //  Check: java.time.temporal.TemporalAdjusters.nextOrSame(DayOfWeek)
             localDate = localDate.with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY));
             return temporal.with(localDate);
         };
@@ -118,6 +119,7 @@ public class STest5StreamsInDateTimeTest {
                 LocalDate.of(2015, 1, 4));
 
         // TODO: Fix the list mapping below.
+        //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         List<LocalDate> collectSundays = someDates
                 .map(each -> each.with(nextOrSameSunday))
                 .collect(Collectors.toList());
@@ -149,13 +151,14 @@ public class STest5StreamsInDateTimeTest {
         //        enum for simplicity.
         TemporalAdjuster tPlusTwoBusinessDates = temporal -> {
             LocalDate localDate = LocalDate.from(temporal);
-            DayOfWeek dayOfWeek = localDate.getDayOfWeek();
-            if (dayOfWeek.getValue() >= 5) {
-                localDate = localDate.with(TemporalAdjusters.next(DayOfWeek.TUESDAY));
-            } else {
+            int dayOfWeekValue = localDate.getDayOfWeek().getValue();
+            if (dayOfWeekValue < 4) {
                 localDate = localDate.plusDays(2);
-                if (localDate.getDayOfWeek().getValue() > 5) {
+            } else {
+                if (dayOfWeekValue == 4) {
                     localDate = localDate.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
+                } else {
+                    localDate = localDate.with(TemporalAdjusters.next(DayOfWeek.TUESDAY));
                 }
             }
             return temporal.with(localDate);
