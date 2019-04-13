@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>none.cvg.katas</groupId>
+    <artifactId>java-katas</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <name>Aggregator POM for Java Katas</name>
+    <url>http://cguntur.me</url>
+
+    <modules>
+<!--        <module>java-katas-bom</module>-->
+        <module>java-datetime</module>
+        <module>java-handles</module>
+    </modules>
+
+    <properties>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+
+        <apiguardian-api.version>1.0.0</apiguardian-api.version>
+        <opentest4j.version>1.1.1</opentest4j.version>
+
+        <junit-platform-surefire-provider.version>1.2.0</junit-platform-surefire-provider.version>
+
+        <junit5.version>5.4.1</junit5.version>
+    </properties>
+
+    <dependencyManagement>
+
+        <dependencies>
+
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>${junit5.version}</version>
+            </dependency>
+
+        </dependencies>
+
+    </dependencyManagement>
+
+    <build>
+
+        <pluginManagement>
+
+            <plugins>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.7.0</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.21.0</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.junit.platform</groupId>
+                            <artifactId>junit-platform-surefire-provider</artifactId>
+                            <version>${junit-platform-surefire-provider.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.junit.jupiter</groupId>
+                            <artifactId>junit-jupiter-engine</artifactId>
+                            <version>${junit5.version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>1.9.1</version>
+                </plugin>
+
+            </plugins>
+
+        </pluginManagement>
+
+    </build>
+
+</project>
