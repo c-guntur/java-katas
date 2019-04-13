@@ -14,7 +14,6 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
-import static none.cvg.datetime.LenientAssert.FIX_WITH_RIGHT_CALL;
 import static none.cvg.datetime.LenientAssert.assertAlmostEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -117,7 +116,8 @@ public class Test1InstantAndDateInteropTest {
 
         // TODO: Assert that instant default toString matches the ISO8601 full date format.
         // REPLACE the FIX_WITH_RIGHT_CALL below with a method call on Instant.
-        assertEquals(classicDateFormatter.format(classicDate), FIX_WITH_RIGHT_CALL,
+        assertEquals(classicDateFormatter.format(classicDate),
+                null,
                 "Instant toString() should match ISO8601 format");
     }
 

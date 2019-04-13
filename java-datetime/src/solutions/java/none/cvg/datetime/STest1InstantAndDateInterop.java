@@ -31,7 +31,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class STest1InstantAndDateInterop {
 
     private Date classicDate;
-    private Instant instant;
     private SimpleDateFormat classicDateFormatter = new SimpleDateFormat("YYYY-MM-dd'T'HH:mm:ss.SSS'Z'");
 
     @BeforeEach
@@ -42,27 +41,27 @@ public class STest1InstantAndDateInterop {
     @Test
     @Tag("PASSING")
     @Order(1)
-    public void convertInstantToDate() {
+    public void verifyInstantAndDateHaveSameEpochMilliseconds() {
 
         // TODO: Replace with an Instant generated from a Date
         //  Use a Date API that converts Date instances into Instant instances.
         //  Check: java.util.Date.toInstant()
-        instant = classicDate.toInstant();
+        Instant instant = classicDate.toInstant();
 
         // TODO: Fix the "null" below to get milliseconds from epoch from the Instant
         //  Use an Instant API which converts it into milliseconds
         //  Check: java.time.Instant.toEpochMilli()
         assertEquals(Long.valueOf(classicDate.getTime()),
-                null,
+                instant.toEpochMilli(),
                 "Date and Instant milliseconds should be equal");
     }
 
     @Test
     @Tag("PASSING")
     @Order(2)
-    public void convertInstantToSeconds() {
+    public void verifyInstantAndDateHaveAlmostSameEpochSeconds() {
 
-        instant = classicDate.toInstant();
+        Instant instant = classicDate.toInstant();
 
         // NOTE: There is no simpler API method to get epoch seconds.
         long classicDateInSeconds = classicDate.getTime() / 1000;
@@ -81,9 +80,9 @@ public class STest1InstantAndDateInterop {
     @Test
     @Tag("PASSING")
     @Order(3)
-    public void convertInstantHasNanoseconds() {
+    public void verifyInstantHasNanoseconds() {
 
-        instant = Instant.now();
+        Instant instant = Instant.now();
 
         // TODO: Replace the "null" below to get nanos from the Instant
         //  Assert that instant has nano seconds.
@@ -99,41 +98,38 @@ public class STest1InstantAndDateInterop {
 
         classicDateFormatter.setTimeZone(TimeZone.getTimeZone("UTC"));
 
-        instant = classicDate.toInstant();
+        Instant instant = classicDate.toInstant();
 
-        // TODO: Assert that instant default toString matches the ISO8601 full date format.
-        // REPLACE the FIX_WITH_RIGHT_CALL below with a method call on Instant.
-        assertEquals(classicDateFormatter.format(classicDate), instant.toString(),
+        // TODO: Replace the "null" below to retrieve an instant as a string
+        //  Assert that instant default toString matches the ISO8601 full date format.
+        assertEquals(classicDateFormatter.format(classicDate),
+                instant.toString(),
                 "Instant toString() should match ISO8601 format");
     }
 
     @Test
     @Tag("PASSING")
-    @Order(6)
+    @Order(5)
     public void verifyInstantDateInteroperability() {
 
         // *****************************************************
         // Converting Date to an Instant.
         // *****************************************************
-
-        // TODO: Verify interoperability between classic and java8 styles
-        // REPLACE with conversion from Date to Instant below
-        Instant anotherInstant = classicDate.toInstant();
-        assertEquals(classicDate.getTime(), anotherInstant.toEpochMilli());
+        Instant instant = classicDate.toInstant();
+        assertEquals(classicDate.getTime(), instant.toEpochMilli());
 
 
         // *****************************************************
         // Converting an Instant to a Date.
         // *****************************************************
-
-        // REPLACE with conversion from Instant to Date below
-        //-----------------------------------------
-        Date anotherDate = Date.from(anotherInstant);
+        // TODO: Replace the "null" below to convert an Instant into a Date
+        //  Check: java.util.Date.from()
+        Date anotherDate = Date.from(instant);
         assertEquals(classicDate, anotherDate);
 
         // *****************************************************
         // Think about why all conversions and inter-ops are
-        // built into Date and not the java.time API.
+        // built into Date and not the newer java.time API.
         // *****************************************************
     }
 
