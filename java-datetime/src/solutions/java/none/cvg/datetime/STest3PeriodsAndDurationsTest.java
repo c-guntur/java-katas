@@ -32,7 +32,7 @@ import static org.junit.jupiter.api.Assertions.fail;
  * @see ChronoUnit
  */
 @DisplayNameGeneration(DateTimeKataDisplayNames.class)
-@DisplayName("Periods and Durations")
+@DisplayName("Periods (days, months years) and Durations (hours minutes, seconds")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class STest3PeriodsAndDurationsTest {
 
@@ -167,6 +167,8 @@ public class STest3PeriodsAndDurationsTest {
     }
 
     @Test
+    @Tag("PASSING")
+    @Order(4)
     public void verifyDurationCreatedUsingFluentMethods() {
 
         // Create a Duration instance
