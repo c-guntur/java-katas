@@ -31,6 +31,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class Test1InstantAndDateInteropTest {
 
     private Date classicDate;
+
     private SimpleDateFormat classicDateFormatter = new SimpleDateFormat("YYYY-MM-dd'T'HH:mm:ss.SSS'Z'");
 
     @BeforeEach
@@ -43,10 +44,10 @@ public class Test1InstantAndDateInteropTest {
     @Order(1)
     public void convertInstantToDate() {
 
-        // TODO: Create an Instant generated from a Date
+        // TODO: Replace the Instant.now() with an instant from classicDate.
         //  Use a Date API that converts Date instances into Instant instances.
         //  Check: java.util.Date.toInstant()
-        Instant instant = null;
+        Instant instant = Instant.now();
 
         // TODO: Replace the "null" below to get milliseconds from epoch from the Instant
         //  Use an Instant API which converts it into milliseconds

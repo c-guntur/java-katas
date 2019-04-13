@@ -3,7 +3,6 @@ package none.cvg.datetime;
 import java.time.Clock;
 import java.time.DayOfWeek;
 import java.time.Instant;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.MonthDay;
@@ -21,7 +20,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * DateTime partials: Month, MonthDay, Year, YearMonth and DayOfWeek tests.
@@ -41,7 +39,6 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class STest4DateTimePartialsTest {
 
     private Clock terminatorOriginalJudgementDay = null;
-//    private LocalDateTime tOJDateTime;
 
     @BeforeEach
     public void setup() {
@@ -58,7 +55,7 @@ public class STest4DateTimePartialsTest {
 
         LocalDateTime tOJDateTime = LocalDateTime.now(terminatorOriginalJudgementDay);
 
-        // TODO: Replace the "null" below get an Month instance.
+        // TODO: Replace the "null" below get a Month instance.
         //  Check: java.time.LocalDateTime.getMonth()
         Month tOJMonth = tOJDateTime.getMonth();
 
@@ -141,7 +138,6 @@ public class STest4DateTimePartialsTest {
         // TODO: Replace the DayOfWeek.from() below to get the Day Of Week from the tOJDateTime.
         //  Check: java.time.LocalDateTime.getDayOfWeek()
         DayOfWeek dayOfWeek = tOJDateTime.getDayOfWeek();
-//                  dayOfWeek = DayOfWeek.from(LocalDate.now());
 
         assertEquals(DayOfWeek.FRIDAY,
                 dayOfWeek,

@@ -69,8 +69,9 @@ public class STest3PeriodsAndDurationsTest {
         LocalDateTime tOJDateTime = LocalDateTime.now(terminatorOriginalJudgementDay);
 
         // TODO: Call a method on tOJDateTime to add the newly created Period
-        //  Check : java.time.Period.of(int, int, int)
-        LocalDateTime calculatedTwentyYearsAndTenDaysLater = tOJDateTime.plus(twentyYearsAndTenDays);
+        //  Check : java.time.LocalDateTime.plus(java.time.temporal.TemporalAmount)
+        LocalDateTime calculatedTwentyYearsAndTenDaysLater =
+                tOJDateTime.plus(twentyYearsAndTenDays);
 
         assertEquals(2017,
                 calculatedTwentyYearsAndTenDaysLater.getYear(),
@@ -109,7 +110,8 @@ public class STest3PeriodsAndDurationsTest {
 
         // TODO: Call a method on tOJDateTime to add the newly created Period
         //  Check : java.time.LocalDateTime.plus(java.time.temporal.TemporalAmount)
-        LocalDateTime calculatedTwentyYearsAndTenDaysLater = tOJDateTime.plus(twentyYearsAndTenDays);
+        LocalDateTime calculatedTwentyYearsAndTenDaysLater =
+                tOJDateTime.plus(twentyYearsAndTenDays);
 
         //1997-08-29 after 20 years and 10 days => 2017-09=08
         assertEquals(2017,

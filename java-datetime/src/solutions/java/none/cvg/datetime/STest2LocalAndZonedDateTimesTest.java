@@ -6,13 +6,11 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
-import java.time.OffsetTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.MethodOrderer;
@@ -252,8 +250,6 @@ public class STest2LocalAndZonedDateTimesTest {
         //-----------------------------------------
         ZonedDateTime gmtPlusOneDateTimeAtAllFivesInGmtMinusFive =
                 allDateTimeOhFives.withZoneSameInstant(gmtPlusOneZoneId);
-//        ZonedDateTime gmtPlusOneDateTimeAtAllFivesInGmtMinusFive =
-//                ZonedDateTime.now();
 
         assertEquals(3600,
                 gmtPlusOneDateTimeAtAllFivesInGmtMinusFive.getOffset().getTotalSeconds(),
@@ -308,11 +304,6 @@ public class STest2LocalAndZonedDateTimesTest {
     @DisplayName("verify conversion of UTC date time to Indian Standard Time")
     public void verifyConversionOfUTCDateTimeToIndianStandardTime() {
 
-        // TODO: Replace the ZonedDateTime.now below to display the below UTC time in GMT +0530
-        //  The ZonedDateTime created in GMT. Fix the calls so a ZonedDateTime
-        //  can be created with the offset of GMT +0530. Use an ofInstant from a toInstant.
-        //  Check: java.time.ZonedDateTime.ofInstant(java.time.Instant, java.time.ZoneId)
-        //  Check: java.time.ZonedDateTime.toInstant()
         ZonedDateTime allDateTimeOhFives =
                 ZonedDateTime.of(5,
                         5,
@@ -325,6 +316,11 @@ public class STest2LocalAndZonedDateTimesTest {
 
         ZoneId gmtPlusOneZoneId = ZoneId.ofOffset("", ZoneOffset.of("+0530"));
 
+        // TODO: Replace the ZonedDateTime.now() below to display the below UTC time in GMT +0530
+        //  The ZonedDateTime created in GMT. Fix the calls so a ZonedDateTime
+        //  can be created with the offset of GMT +0530. Use an ofInstant from a toInstant.
+        //  Check: java.time.ZonedDateTime.ofInstant(java.time.Instant, java.time.ZoneId)
+        //  Check: java.time.ZonedDateTime.toInstant()
         ZonedDateTime gmtPlusOneHourTimeForAllFives =
                 ZonedDateTime.ofInstant(
                         allDateTimeOhFives.toInstant(),

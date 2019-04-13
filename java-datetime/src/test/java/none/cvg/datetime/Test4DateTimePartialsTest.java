@@ -3,6 +3,7 @@ package none.cvg.datetime;
 import java.time.Clock;
 import java.time.DayOfWeek;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.MonthDay;
@@ -11,10 +12,15 @@ import java.time.YearMonth;
 import java.time.ZoneId;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * DateTime partials: Month, MonthDay, Year, YearMonth and DayOfWeek tests.
@@ -28,9 +34,12 @@ import static org.junit.jupiter.api.Assertions.fail;
  * @see YearMonth
  * @see DayOfWeek
  */
+@DisplayNameGeneration(DateTimeKataDisplayNames.class)
+@DisplayName("Date and Time partials such as credit card expiration")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class Test4DateTimePartialsTest {
+
     private Clock terminatorOriginalJudgementDay = null;
-    private LocalDateTime tOJDateTime;
 
     @BeforeEach
     public void setup() {
@@ -38,55 +47,102 @@ public class Test4DateTimePartialsTest {
         Instant instant = Instant.parse("1997-08-29T07:14:30Z");
         // We make an assumption for GMT - 5 as the standard time for users of this test.
         terminatorOriginalJudgementDay = Clock.fixed(instant, ZoneId.of("GMT-5"));
-        tOJDateTime = LocalDateTime.now(terminatorOriginalJudgementDay);
     }
 
     @Test
-    public void month() {
+    @Tag("TODO")
+    @Order(1)
+    public void verifyMonth() {
 
-        // TODO: Fix assertion.
-        fail("Delete this fail() and FIX assert below.");
-        // assertEquals(Month.AUGUST, tOJDateTime.getMonth(), "The Month enumeration should match August.");
+        LocalDateTime tOJDateTime = LocalDateTime.now(terminatorOriginalJudgementDay);
+
+        // TODO: Replace the "null" below get a Month instance.
+        //  Check: java.time.LocalDateTime.getMonth()
+        Month tOJMonth = null;
+
+        assertEquals(Month.AUGUST,
+                tOJMonth,
+                "The Month enumeration should match August.");
     }
 
     @Test
-    public void monthDay() {
+    @Tag("TODO")
+    @Order(2)
+    public void verifyMonthDay() {
 
-        MonthDay monthDay = MonthDay.now(terminatorOriginalJudgementDay);
-        // TODO: Fix assertions.
-        fail("Delete this fail() and FIX assertions below.");
-        assertEquals(Month.AUGUST, monthDay.getMonth(), "The month enumeration should match August.");
-        assertEquals(8, monthDay.getMonthValue(), "The month value should match 8.");
-        assertEquals(29, monthDay.getDayOfMonth(), "The date value should match 29.");
+        // Real world: Birthday or anniversary
+
+        // TODO: Replace the MonthDay.now() below get a MonthDay anniversary for the Judegement Day.
+        //  Check: java.time.MonthDay.now(java.time.Clock)
+        MonthDay anniversaryofJudgementDay = MonthDay.now();
+
+        assertEquals(Month.AUGUST,
+                anniversaryofJudgementDay.getMonth(),
+                "The month enumeration should match August.");
+
+        assertEquals(8,
+                anniversaryofJudgementDay.getMonthValue(),
+                "The month value should match 8.");
+
+        assertEquals(29,
+                anniversaryofJudgementDay.getDayOfMonth(),
+                "The date value should match 29.");
     }
 
     @Test
-    public void year() {
+    @Tag("TODO")
+    @Order(3)
+    public void verifyYear() {
 
-        Year year = Year.now(terminatorOriginalJudgementDay);
-        // TODO: Fix assertion.
-        fail("Delete this fail() and FIX assertion below.");
-        assertEquals(1997, year.getValue(), "The year value should match 1997.");
+        // Real world: Age or Year of occurrence.
+
+        // TODO: Replace the Year.now() below get a Year for the Judegement Day.
+        //  Check: java.time.Year.now(java.time.Clock)
+        Year yearOfJudgementDay = Year.now();
+
+        assertEquals(1997,
+                yearOfJudgementDay.getValue(),
+                "The year value should match 1997.");
     }
 
     @Test
-    public void yearMonth() {
+    @Tag("TODO")
+    @Order(4)
+    public void verifyYearMonth() {
 
-        YearMonth yearMonth = YearMonth.now(terminatorOriginalJudgementDay);
-        // TODO: Fix assertions.
-        fail("Delete this fail() and FIX assertions below.");
-        assertEquals(Month.AUGUST, yearMonth.getMonth(), "The month enumeration should match August.");
-        assertEquals(8, yearMonth.getMonthValue(), "The month value should match 8.");
-        assertEquals(1997, yearMonth.getYear(), "The year value should match 1997.");
+        // Real world: CreditCard or Medicine expiration.
+
+        // TODO: Replace the YearMonth.now() below get a YearMonth for the Judegement Day.
+        //  Check: java.time.YearMonth.now(java.time.Clock)
+        YearMonth yearMonthOfJudgementDay = YearMonth.now();
+
+        assertEquals(Month.AUGUST,
+                yearMonthOfJudgementDay.getMonth(),
+                "The month enumeration should match August.");
+
+        assertEquals(8,
+                yearMonthOfJudgementDay.getMonthValue(),
+                "The month value should match 8.");
+
+        assertEquals(1997,
+                yearMonthOfJudgementDay.getYear(),
+                "The year value should match 1997.");
     }
 
     @Test
-    public void dayOfWeek() {
+    @Tag("TODO")
+    @Order(5)
+    public void verifyDayOfWeek() {
 
-        DayOfWeek dayOfWeek = tOJDateTime.getDayOfWeek();
-        // TODO: Fix assertions.
-        fail("Delete this fail() and FIX assertion below.");
-        assertEquals(DayOfWeek.FRIDAY, dayOfWeek, "The day of the week enumeration should match Friday.");
+        LocalDateTime tOJDateTime = LocalDateTime.now(terminatorOriginalJudgementDay);
+
+        // TODO: Replace the DayOfWeek.from() below to get the Day Of Week from the tOJDateTime.
+        //  Check: java.time.LocalDateTime.getDayOfWeek()
+        DayOfWeek dayOfWeek = DayOfWeek.from(LocalDate.now());
+
+        assertEquals(DayOfWeek.FRIDAY,
+                dayOfWeek,
+                "The day of the week enumeration should match Friday.");
     }
 
 }

@@ -10,7 +10,13 @@ import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -25,7 +31,11 @@ import static org.junit.jupiter.api.Assertions.fail;
  * @see Duration
  * @see ChronoUnit
  */
+@DisplayNameGeneration(DateTimeKataDisplayNames.class)
+@DisplayName("Periods (days, months years) and Durations (hours minutes, seconds")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class Test3PeriodsAndDurationsTest {
+
     private Clock terminatorOriginalJudgementDay = null;
 
     @BeforeEach
@@ -37,71 +47,167 @@ public class Test3PeriodsAndDurationsTest {
     }
 
     @Test
-    public void period() {
+    @Tag("TODO")
+    @Order(1)
+    public void verifyPeriodCreatedUsingIntegers() {
 
-        // *****************************************************
-        // Try using
-        //                   either:
-        // the fluent 'Period.ofXXX' and 'Period.with' methods
-        // in tandem
-        //                       or:
-        // use the single 'of' method.
-        // *****************************************************
+        // Create a Period instance
+        // TODO: Replace the Period.ZERO to a time period of 20 years and 10 days.
+        //  Check : java.time.Period.of(int, int, int)
+        Period twentyYearsAndTenDays = Period.ZERO;
 
-        // Create a time period
-        // TODO: Fix Period below to cover 20 years and 10 days.
-        fail("Delete this fail() and FIX using Period static utilities below.");
-        // Period twentyYearsAndTenDays = null;
-        // assertEquals(20, twentyYearsAndTenDays.get(ChronoUnit.YEARS), "The Period should include twenty years");
-        // assertEquals(10, twentyYearsAndTenDays.get(ChronoUnit.DAYS), "The Period should include ten days");
+        assertEquals(20,
+                twentyYearsAndTenDays.get(ChronoUnit.YEARS),
+                "The Period should include twenty years");
+
+        assertEquals(10,
+                twentyYearsAndTenDays.get(ChronoUnit.DAYS),
+                "The Period should include ten days");
 
 
         // Add the Period to a LocalDateTime
         LocalDateTime tOJDateTime = LocalDateTime.now(terminatorOriginalJudgementDay);
 
-        fail("Delete this fail() and FIX LocalDateTime to use the created Period.");
-        // TODO: Fix LocalDateTime below to add the 20 years and 10 days.
-        //-----------------------------------------
-        LocalDateTime calculatedTwentyYearsAndTenDaysLater = null; //tOJDateTime + Period.
+        // TODO: Call a method on tOJDateTime to add the newly created Period
+        //  Check : java.time.LocalDateTime.plus(java.time.temporal.TemporalAmount)
+        LocalDateTime calculatedTwentyYearsAndTenDaysLater =
+                tOJDateTime;
 
-        LocalDate twentyYearsAndTenDaysLaterDate = LocalDate.of(2017, 9, 8);
-        assertEquals(twentyYearsAndTenDaysLaterDate.getYear(), calculatedTwentyYearsAndTenDaysLater.getYear(), "The year should match 2017.");
-        assertEquals(twentyYearsAndTenDaysLaterDate.getMonth(), calculatedTwentyYearsAndTenDaysLater.getMonth(), "The month should match September (9th month).");
-        assertEquals(twentyYearsAndTenDaysLaterDate.getDayOfMonth(), calculatedTwentyYearsAndTenDaysLater.getDayOfMonth(), "The date should match the 8th.");
+        assertEquals(2017,
+                calculatedTwentyYearsAndTenDaysLater.getYear(),
+                "The year after 20 years and 10 days should be 2017");
+
+        assertEquals(9,
+                calculatedTwentyYearsAndTenDaysLater.getMonthValue(),
+                "The month value after 20 years and 10 days should be 9");
+
+        assertEquals(8,
+                calculatedTwentyYearsAndTenDaysLater.getDayOfMonth(),
+                "The date after 20 years and 10 days should be 8");
     }
 
     @Test
-    public void duration() {
+    @Tag("TODO")
+    @Order(2)
+    public void verifyPeriodCreatedUsingFluentMethods() {
 
-        // *****************************************************
-        // Try using
-        //                   either:
-        // the fluent methods on Duration
-        //                       or:
-        // use the single 'of' method.
-        // *****************************************************
+        // Create a Period instance
+        // TODO: Replace the Period.ZERO to a time period of 20 years and 10 days.
+        //  Check : java.time.Period.ofYears(int).withDays(int)
+        Period twentyYearsAndTenDays = Period.ZERO;
 
-        // Create a time duration
-        // TODO: Fix Period below to cover 3 hours and 6 seconds.
-        fail("Delete this fail() and FIX using Duration static utilities below.");
-        // Duration threeHoursAndSixSeconds = null;
-        // assertEquals(3, threeHoursAndSixSeconds.toHours(), "The time duration should include three hours.");
-        // assertEquals(10806, threeHoursAndSixSeconds.getSeconds(), "The time duration should include three hours and six seconds in seconds."); //Note: getSeconds gets full time.
-        // NOTICE how the 'with'Seconds has a different meaning for Duration?
+        assertEquals(20,
+                twentyYearsAndTenDays.get(ChronoUnit.YEARS),
+                "The Period should include twenty years");
+
+        assertEquals(10,
+                twentyYearsAndTenDays.get(ChronoUnit.DAYS),
+                "The Period should include ten days");
+
+
+        // Add the Period to a LocalDateTime
+        LocalDateTime tOJDateTime = LocalDateTime.now(terminatorOriginalJudgementDay);
+
+        // TODO: Call a method on tOJDateTime to add the newly created Period
+        //  Check : java.time.LocalDateTime.plus(java.time.temporal.TemporalAmount)
+        LocalDateTime calculatedTwentyYearsAndTenDaysLater =
+                tOJDateTime;
+
+        //1997-08-29 after 20 years and 10 days => 2017-09=08
+        assertEquals(2017,
+                calculatedTwentyYearsAndTenDaysLater.getYear(),
+                "The year after 20 years and 10 days should be 2017");
+
+        assertEquals(9,
+                calculatedTwentyYearsAndTenDaysLater.getMonthValue(),
+                "The month value after 20 years and 10 days should be 9");
+
+        assertEquals(8,
+                calculatedTwentyYearsAndTenDaysLater.getDayOfMonth(),
+                "The date after 20 years and 10 days should be 8");
+    }
+
+    @Test
+    @Tag("TODO")
+    @Order(3)
+    public void verifyDurationCreatedUsingIntegersAndChronoUnits() {
+
+        // Create a Duration instance
+        // TODO: Replace the Duration.ZERO to a duration of 3 hours and 6 seconds.
+        //  Check: java.time.Duration.of(int, ChronoUnit)
+        Duration threeHoursAndSixSeconds = Duration.ZERO;
+
+        assertEquals(3,
+                threeHoursAndSixSeconds.toHours(),
+                "The time duration should include three hours.");
+
+        assertEquals(10806,
+                threeHoursAndSixSeconds.getSeconds(),
+                "The time duration should include three hours and six seconds in seconds.");
 
 
         // Add the Duration to a LocalDateTime
         LocalDateTime tOJDateTime = LocalDateTime.now(terminatorOriginalJudgementDay);
 
-//        fail("Delete this fail() and FIX LocalDateTime to use the created Duration.");
-        // TODO: Fix LocalDateTime below to add the 3 hours and 6 seconds.
-        //-----------------------------------------
-        LocalDateTime calculatedThreeHoursAndSixSecondsLater = null; //tOJDateTime + Duration.
+        // TODO: Call a method on tOJDateTime to add the newly created Duration
+        //  Check : java.time.LocalDateTime.plus(java.time.temporal.TemporalAmount)
+        LocalDateTime calculatedThreeHoursAndSixSecondsLater =
+                tOJDateTime;
 
         //7:14:30 GMT = 2:14:30 in (GMT-5). Adding 3h 6s = 5:14:36 in (GMT-5)
-        LocalDateTime threeHoursAndSixSecondsLaterDate = tOJDateTime.withHour(5).withSecond(36);
-        assertEquals(threeHoursAndSixSecondsLaterDate.getHour(), calculatedThreeHoursAndSixSecondsLater.getHour(), "The hour should match 5.");
-        assertEquals(threeHoursAndSixSecondsLaterDate.getMinute(), calculatedThreeHoursAndSixSecondsLater.getMinute(), "The minute should match 14.");
-        assertEquals(threeHoursAndSixSecondsLaterDate.getSecond(), calculatedThreeHoursAndSixSecondsLater.getSecond(), "The second should match 36.");
+        assertEquals(5,
+                calculatedThreeHoursAndSixSecondsLater.getHour(),
+                "The hour after 3 hours and six seconds should be 5.");
+
+        assertEquals(14,
+                calculatedThreeHoursAndSixSecondsLater.getMinute(),
+                "The minute after 3 hours and six seconds should be 14.");
+
+        assertEquals(36,
+                calculatedThreeHoursAndSixSecondsLater.getSecond(),
+                "The second after 3 hours and six seconds should be 36.");
+    }
+
+    @Test
+    @Tag("TODO")
+    @Order(4)
+    public void verifyDurationCreatedUsingFluentMethods() {
+
+        // Create a Duration instance
+        // TODO: Replace the Duration.ZERO to a duration of 3 hours and 6 seconds.
+        //  NOTE: Check the difference between plusSeconds and withSeconds
+        //  Check: java.time.Duration.ofHours(int).plusSeconds(int))
+        Duration threeHoursAndSixSeconds = Duration.ZERO;
+
+        assertEquals(3,
+                threeHoursAndSixSeconds.toHours(),
+                "The time duration should include three hours.");
+
+        assertEquals(10806,
+                threeHoursAndSixSeconds.getSeconds(),
+                "The time duration should include three hours and six seconds in seconds.");
+        // NOTE: getSeconds gets full time.
+
+
+        // Add the Duration to a LocalDateTime
+        LocalDateTime tOJDateTime = LocalDateTime.now(terminatorOriginalJudgementDay);
+
+        // TODO: Call a method on tOJDateTime to add the newly created Duration
+        //  Check : java.time.LocalDateTime.plus(java.time.temporal.TemporalAmount)
+        LocalDateTime calculatedThreeHoursAndSixSecondsLater =
+                tOJDateTime;
+
+        //7:14:30 GMT = 2:14:30 in (GMT-5). Adding 3h 6s = 5:14:36 in (GMT-5)
+        assertEquals(5,
+                calculatedThreeHoursAndSixSecondsLater.getHour(),
+                "The hour after 3 hours and six seconds should be 5.");
+
+        assertEquals(14,
+                calculatedThreeHoursAndSixSecondsLater.getMinute(),
+                "The minute after 3 hours and six seconds should be 14.");
+
+        assertEquals(36,
+                calculatedThreeHoursAndSixSecondsLater.getSecond(),
+                "The second after 3 hours and six seconds should be 36.");
     }
 }

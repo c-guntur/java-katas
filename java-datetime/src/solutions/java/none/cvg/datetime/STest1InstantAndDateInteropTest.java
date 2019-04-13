@@ -44,7 +44,7 @@ public class STest1InstantAndDateInteropTest {
     @Order(1)
     public void verifyInstantAndDateHaveSameEpochMilliseconds() {
 
-        // TODO: Create an Instant generated from a Date
+        // TODO: Replace the Instant.now() with an instant from classicDate.
         //  Use a Date API that converts Date instances into Instant instances.
         //  Check: java.util.Date.toInstant()
         Instant instant = classicDate.toInstant();
