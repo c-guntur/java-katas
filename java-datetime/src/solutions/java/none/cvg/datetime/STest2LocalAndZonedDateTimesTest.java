@@ -130,9 +130,11 @@ public class STest2LocalAndZonedDateTimesTest {
         assertEquals(1997,
                 theOriginalJudgementDDate.getYear(),
                 "The Original Terminator Judgement Day was in 1997");
+
         assertEquals(Month.AUGUST,
                 theOriginalJudgementDDate.getMonth(),
                 "The Original Terminator Judgement Day was in August");
+
         assertEquals(8,
                 theOriginalJudgementDDate.getMonthValue(),
                 "The Original Terminator Judgement Day was in the 8th month");
@@ -229,7 +231,7 @@ public class STest2LocalAndZonedDateTimesTest {
     @Test
     @Tag("PASSING")
     @Order(8)
-    public void zonedDateTime() {
+    public void verifyZonedDateTimeUsingIntegers() {
 
         ZonedDateTime allDateTimeOhFives =
                 ZonedDateTime.of(5,
@@ -243,10 +245,10 @@ public class STest2LocalAndZonedDateTimesTest {
 
         ZoneId gmtPlusOneZoneId = ZoneId.ofOffset("", ZoneOffset.of("+0100"));
 
-        // TODO: Replace ZoneDateTime.now() to get date time in GMT +1 offset.
+        // TODO: Replace ZonedDateTime.now() to get date time in GMT +1 offset.
         //  Given a date of 2005-05-05 and a time on 05:05:05 AM in GMT -5,
         //  fix it to display in GMT +1. Show the same Instant in a different zone.
-        //  Check: java.time.ZonedDateTime.withZoneSameInstant(ZoneId)
+        //  Check: java.time.ZonedDateTime.withZoneSameInstant(java.time.ZoneId)
         //-----------------------------------------
         ZonedDateTime gmtPlusOneDateTimeAtAllFivesInGmtMinusFive =
                 allDateTimeOhFives.withZoneSameInstant(gmtPlusOneZoneId);
@@ -265,7 +267,14 @@ public class STest2LocalAndZonedDateTimesTest {
     @Test
     @Tag("PASSING")
     @Order(9)
-    public void recommendedDateBasedTestingForZonedDateTime() {
+    public void verifyZonedDateTimeUsingClock() {
+
+        // *****************************************************
+        // Demonstrate creating a new ZonedDateTime if GMT +1
+        // from the clock now(). Convert a LocalDateTime into
+        // an Instant, which can subsequently be used to
+        // create the new ZonedDateTime
+        // *****************************************************
 
         LocalDateTime theOriginalJudgementDayDateTime =
                 LocalDateTime.now(terminatorOriginalJudgementDay);
@@ -273,52 +282,61 @@ public class STest2LocalAndZonedDateTimesTest {
         Instant tojdInstant = theOriginalJudgementDayDateTime
                 .toInstant(ZoneOffset.of("+0000"));
 
+        // TODO: Replace ZonedDateTime.now() to get date time in GMT +1 offset.
+        //  Given a timestamp of 1997-08-29T07:14:30Z,
+        //  fix it to display in GMT +1. Show the same Instant in a different zone.
+        //  Check: java.time.ZonedDateTime.ofInstant(java.time.Instant, java.time.ZoneId)
         ZonedDateTime gmtPlusOneHourTimeForTOJD =
                 ZonedDateTime.ofInstant(tojdInstant, ZoneId.of("GMT+1"));
 
-        // TODO: Fix the below asserts, so they pass.
         assertEquals(8,
                 gmtPlusOneHourTimeForTOJD.getMonthValue(),
-                "The expected and actual values need to match");
+                "The expected and actual month values should match");
 
         assertEquals(3,
                 gmtPlusOneHourTimeForTOJD.getHour(),
-                "The expected and actual values need to match");
+                "The expected and actual hour values should match");
 
-        assertEquals(14,
+        assertEquals(Integer.valueOf(14),
                 gmtPlusOneHourTimeForTOJD.getMinute(),
-                "The expected and actual values need to match");
+                "The expected and actual minute values should match");
     }
 
     @Test
-    @Tag("NOT_WORKING")
-    @Order(5)
-    @Disabled
-    public void verifyLocalTimeInEasternTimeUsingClock() {
+    @Tag("PASSING")
+    @Order(10)
+    @DisplayName("verify conversion of UTC date time to Indian Standard Time")
+    public void verifyConversionOfUTCDateTimeToIndianStandardTime() {
 
-        // TODO: Replace the call below to display 2:14AM UTC
-        //  Fix time below to refer to when the Original Judgement Day was triggered.
-        //  This test uses timezones, so all times will be in the timezone in this test.
-        //  This test will show how this time can be displayed in Eastern Time
-        //  (Washington DC / New York City).
-        //  Check: java.time.LocalTime.now(java.time.Clock)
-        LocalTime theOriginalJudgementDayTime = LocalTime.now(terminatorOriginalJudgementDay);
+        // TODO: Replace the ZonedDateTime.now below to display the below UTC time in GMT +0530
+        //  The ZonedDateTime created in GMT. Fix the calls so a ZonedDateTime
+        //  can be created with the offset of GMT +0530. Use an ofInstant from a toInstant.
+        //  Check: java.time.ZonedDateTime.ofInstant(java.time.Instant, java.time.ZoneId)
+        //  Check: java.time.ZonedDateTime.toInstant()
+        ZonedDateTime allDateTimeOhFives =
+                ZonedDateTime.of(5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        5,
+                        555,
+                        ZoneId.ofOffset("", ZoneOffset.UTC));
 
-        ZoneOffset easternTimeOffset = ZoneOffset.of("-0500");
+        ZoneId gmtPlusOneZoneId = ZoneId.ofOffset("", ZoneOffset.of("+0530"));
 
-        OffsetTime offsetTime = theOriginalJudgementDayTime.atOffset(easternTimeOffset);
+        ZonedDateTime gmtPlusOneHourTimeForAllFives =
+                ZonedDateTime.ofInstant(
+                        allDateTimeOhFives.toInstant(),
+                        gmtPlusOneZoneId);
 
-        LocalTime theOriginalJudgementDayDCTime = LocalTime.of(
-                offsetTime.getHour(),
-                offsetTime.getMinute());
+        assertEquals(10,
+                gmtPlusOneHourTimeForAllFives.getHour(),
+                "The hour should be at 10 AM when Zone Offset is GMT +0530");
 
-        assertEquals(7,
-                theOriginalJudgementDayDCTime.getHour(),
-                "The hour should be at 7 AM ET");
-
-        assertEquals(14,
-                theOriginalJudgementDayDCTime.getMinute(),
-                "The minute should be at 14");
+        assertEquals(35,
+                gmtPlusOneHourTimeForAllFives.getMinute(),
+                "The minute should be 35 when Zone Offset is GMT +0530");
     }
 
 }

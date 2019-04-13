@@ -31,6 +31,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class STest1InstantAndDateInteropTest {
 
     private Date classicDate;
+
     private SimpleDateFormat classicDateFormatter = new SimpleDateFormat("YYYY-MM-dd'T'HH:mm:ss.SSS'Z'");
 
     @BeforeEach
