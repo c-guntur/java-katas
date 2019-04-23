@@ -42,7 +42,7 @@ public class Test1InstantAndDateInteropTest {
     @Test
     @Tag("TODO")
     @Order(1)
-    public void convertInstantToDate() {
+    public void verifyInstantAndDateHaveSameEpochMilliseconds() {
 
         // TODO: Replace the Instant.now() with an instant from classicDate.
         //  Use a Date API that converts Date instances into Instant instances.

@@ -3,7 +3,6 @@ package none.cvg.datetime;
 import java.time.Clock;
 import java.time.DayOfWeek;
 import java.time.Instant;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.MonthDay;
@@ -138,7 +137,7 @@ public class Test4DateTimePartialsTest {
 
         // TODO: Replace the DayOfWeek.from() below to get the Day Of Week from the tOJDateTime.
         //  Check: java.time.LocalDateTime.getDayOfWeek()
-        DayOfWeek dayOfWeek = DayOfWeek.from(LocalDate.now());
+        DayOfWeek dayOfWeek = DayOfWeek.from(Instant.now());
 
         assertEquals(DayOfWeek.FRIDAY,
                 dayOfWeek,
