@@ -17,6 +17,7 @@
 <!--        <module>java-katas-bom</module>-->
         <module>java-datetime</module>
         <module>java-handles</module>
+        <module>java-optional</module>
     </modules>
 
     <properties>
