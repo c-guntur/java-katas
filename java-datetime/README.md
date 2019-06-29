@@ -1,4 +1,4 @@
-# javasig-datetime
+# Java Time API - A Code kata
 
 <img align="center" src="docs/DukeTime.png" alt="Java Duke Date Time Logo" title="Java Duke Date Time" hspace="20" height="420"/>
 
