@@ -19,7 +19,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * Instant and Date interoperability.
+ * The tests in this class aim to show interoperability between
+ * `java.util.Date` and the newer `java.time.Instant`.
  *
  * @see Instant
  * @see Date
@@ -85,10 +86,10 @@ public class Test1InstantAndDateInteropTest {
 
         Instant instant = Instant.now();
 
-        // TODO: Replace the "null" below to get nanos from the Instant
+        // TODO: Replace the string "-2" below to get nanos from the Instant
         //  Assert that instant has nano seconds.
         //  Check: java.time.Instant.getNano()
-        assertTrue(Integer.valueOf(null) > -1,
+        assertTrue(Integer.valueOf("-2") > -1,
                 "Instant should have nanoseconds");
     }
 

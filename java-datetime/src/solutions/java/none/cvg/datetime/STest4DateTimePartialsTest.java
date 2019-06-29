@@ -135,7 +135,7 @@ public class STest4DateTimePartialsTest {
 
         LocalDateTime tOJDateTime = LocalDateTime.now(terminatorOriginalJudgementDay);
 
-        // TODO: Replace the DayOfWeek.from() below to get the Day Of Week from the tOJDateTime.
+        // TODO: Replace the null below to get the Day Of Week from the tOJDateTime.
         //  Check: java.time.LocalDateTime.getDayOfWeek()
         DayOfWeek dayOfWeek = tOJDateTime.getDayOfWeek();
 

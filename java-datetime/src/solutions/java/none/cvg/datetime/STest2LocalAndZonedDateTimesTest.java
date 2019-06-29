@@ -70,7 +70,7 @@ public class STest2LocalAndZonedDateTimesTest {
         // month numbering consistent with ISO8601 standard?
         // *****************************************************
 
-        // TODO: Replace the LocalDate.now() below to create a LocalDate of 2015-03-17.
+        // DONE: Replace the LocalDate.now() below to create a LocalDate of 2015-03-17.
         //  Fix LocalDate to a date of 2015-03-17. Try using integers for years, months and dates.
         //  Check : java.time.LocalDate.of(int, int, int)
         LocalDate stPatricksDay2015 = LocalDate.of(2015, 3, 17);
@@ -91,7 +91,7 @@ public class STest2LocalAndZonedDateTimesTest {
         // was 'born' on January 12th 1999
         // *****************************************************
 
-        // TODO: Replace the LocalDate.now() below to create a LocalDate of 1999-01-12.
+        // DONE: Replace the LocalDate.now() below to create a LocalDate of 1999-01-12.
         //  Fix LocalDate below to HAL's birthday. Use Month enums.
         //  No longer a confusion about whether January is 0 or 1.
         LocalDate halsBirthday = LocalDate.of(1999, Month.JANUARY, 12);
@@ -118,7 +118,7 @@ public class STest2LocalAndZonedDateTimesTest {
         // "now" of the Original Terminator Judgement day.
         // *****************************************************
 
-        // TODO: Replace the LocalDate.now() below to create a Date of the Judgement Day.
+        // DONE: Replace the LocalDate.now() below to create a Date of the Judgement Day.
         //  Fix the date below to use a clock. Replace then now() with a now(Clock).
         //  The LocalDate should thus read 1997-08-29
         //  Check: java.time.LocalDate.now(java.time.Clock)
@@ -147,7 +147,7 @@ public class STest2LocalAndZonedDateTimesTest {
         // Demonstrate setting just the time to 7:52
         // *****************************************************
 
-        // TODO: Replace the LocalTime.now() below to display a LocalTime of 7:52 AM.
+        // DONE: Replace the LocalTime.now() below to display a LocalTime of 7:52 AM.
         //  Fix LocalTime to 07:52 AM, using LocalTime with integers for hours and minutes.
         //  Check: java.time.LocalTime.of(int, int)
         //-----------------------------------------
@@ -163,7 +163,7 @@ public class STest2LocalAndZonedDateTimesTest {
     @Order(5)
     public void verifyLocalTimeInUtcUsingClock() {
 
-        // TODO: Replace the LocalTime.now() call below to display 2:14AM UTC
+        // DONE: Replace the LocalTime.now() call below to display 2:14AM UTC
         //  Fix time below to refer to when the Original Judgement Day was triggered.
         //  This test does not include timezones, so all times will be UTC in this test.
         //  There is another test below that will show how this time can be displayed in
@@ -185,7 +185,7 @@ public class STest2LocalAndZonedDateTimesTest {
     @Order(6)
     public void verifyLocalDateTimeUsingIntegers() {
 
-        // TODO: Replace the LocalDateTime.now() to produce the desired date and time.
+        // DONE: Replace the LocalDateTime.now() to produce the desired date and time.
         //  Fix LocalDateTime to a date of 2005-05-05 and a time on 05:05:05 AM.
         //  Check: java.time.LocalDateTime.of(int, int, int, int, int, int)
         LocalDateTime allDateTimeOhFives =
@@ -207,7 +207,7 @@ public class STest2LocalAndZonedDateTimesTest {
     @Order(7)
     public void verifyLocalDateTimeUsingClock() {
 
-        // TODO: Replace the LocalDateTime.now() to produce the desired date and time.
+        // DONE: Replace the LocalDateTime.now() to produce the desired date and time.
         //  Fix LocalDateTime to the exact date-time of the Terminator (Original) Judgement Day.
         //  Check: java.time.LocalDateTime.now(java.time.Clock)
         LocalDateTime theOriginalJudgementDayDateTime =
@@ -243,7 +243,7 @@ public class STest2LocalAndZonedDateTimesTest {
 
         ZoneId gmtPlusOneZoneId = ZoneId.ofOffset("", ZoneOffset.of("+0100"));
 
-        // TODO: Replace ZonedDateTime.now() to get date time in GMT +1 offset.
+        // DONE: Replace ZonedDateTime.now() to get date time in GMT +1 offset.
         //  Given a date of 2005-05-05 and a time on 05:05:05 AM in GMT -5,
         //  fix it to display in GMT +1. Show the same Instant in a different zone.
         //  Check: java.time.ZonedDateTime.withZoneSameInstant(java.time.ZoneId)
@@ -278,7 +278,7 @@ public class STest2LocalAndZonedDateTimesTest {
         Instant tojdInstant = theOriginalJudgementDayDateTime
                 .toInstant(ZoneOffset.of("+0000"));
 
-        // TODO: Replace ZonedDateTime.now() to get date time in GMT +1 offset.
+        // DONE: Replace ZonedDateTime.now() to get date time in GMT +1 offset.
         //  Given a timestamp of 1997-08-29T07:14:30Z,
         //  fix it to display in GMT +1. Show the same Instant in a different zone.
         //  Check: java.time.ZonedDateTime.ofInstant(java.time.Instant, java.time.ZoneId)
@@ -316,7 +316,7 @@ public class STest2LocalAndZonedDateTimesTest {
 
         ZoneId gmtPlusOneZoneId = ZoneId.ofOffset("", ZoneOffset.of("+0530"));
 
-        // TODO: Replace the ZonedDateTime.now() below to display the below UTC time in GMT +0530
+        // DONE: Replace the ZonedDateTime.now() below to display the below UTC time in GMT +0530
         //  The ZonedDateTime created in GMT. Fix the calls so a ZonedDateTime
         //  can be created with the offset of GMT +0530. Use an ofInstant from a toInstant.
         //  Check: java.time.ZonedDateTime.ofInstant(java.time.Instant, java.time.ZoneId)
