@@ -1,0 +1,365 @@
+<html>
+<strong><img style="display:block;margin:auto;height:50%;" src="DukeTime.png" alt="Duke-Calendar" /></strong>
+
+This Kata-based style of teaching includes sharing a set of failing / non-functional JUnit tests
+with TODO comments indicating actions that need to be taken to resolve/pass the JUnit tests.
+
+<p/>Solving the JUnit tests repeatedly helps developers gain muscle-memory into using the feature
+(similar to the karate kata).
+
+<h2>Background: Why a new API</h2>
+First, some background on why there was a need to create a new API.
+<h3>Issues with <code>java.util.Date</code></h3>
+
+<strong>java.util.Date</strong>:
+<ul>
+  <li><strong>is mutable-only</strong> - Date instances are not immutable.</li>
+  <li><strong>has concurrency problems</strong> - Date instances are not thread-safe.</li>
+  <li><strong>has incorrect naming</strong> - Date is not a "date" but a "timestamp".</li>
+  <li><strong>lacks convention</strong> - Days start with 1, months with 0 and years with 1900.</li>
+  <li><strong>lacks fluency</strong> - Cannot create durations (a quarter, 5 minutes) OR combos(year+month, date without seconds) etc.</li>
+</ul>
+
+<h4 style="padding-left:30px;">Additional observations about the pre-Java 8 Date API</h4>
+
+<ul style="padding-left:30px;">
+  <li><code>System.currentTimeInMillis()</code> is not accurate and can return same value for multiple sequential calls.</li>
+  <li><code>java.util.Date</code> vs. <code>java.sql.Date</code> - SQL flavor is only a DATE with no time.</li>
+  <li><code>java.sql.Timestamp</code> - SQL flavor replicating <code>java.util.Date</code> but additionally storing nanoseconds.</li>
+</ul>
+
+<hr />
+
+<h3>Issues with <code>java.util.Calendar</code></h3>
+<strong>java.util.Calendar</strong>:
+<ul>
+  <li><strong>lacks clarity</strong> - Mix of dates and times.</li>
+  <li><strong>has confusing timezone support</strong> - Not very easy to switch timezones, offsets etc.</li>
+  <li><strong>has severe formatting hurdles</strong> - <code>SimpleDateFormat</code> and <code>Calendar</code> do not interoperate well.</li>
+  <li><strong>presents extension hardships</strong> - New calendar systems are created by extending <code>Calendar</code> (therefore all it's problems).</li>
+</ul>
+
+<span><em>“Calendar is the <strong>Ravenous Bugblatter Beast of Traal</strong> for Date APIs”</em></span> - Chandra Guntur (circa 2000).
+
+<h2>What was proposed to fix this?</h2>
+
+<strong>JSR-310: Date and Time API</strong>
+<em>Excerpts from JSR-310 (https://jcp.org/en/jsr/detail?id=310)</em>
+<ul>
+  <li>"The main goal is to build upon the lessons learned from the first two APIs (Date and Calendar) in Java SE, providing a more <span style="color:#993300;"><strong>advanced and comprehensive model for date and time manipulation</strong></span>."</li>
+  <li>"The new API will be targeted at all applications needing a data model for dates and times. This model will go beyond classes to replace Date and Calendar, to <strong><span style="color:#993300;">include representations of date without time, time without date, durations and intervals.</span></strong>"</li>
+  <li>"The new API will also tackle related date and time issues. These include <span style="color:#993300;"><strong>formatting and parsing, taking into account the ISO8601 standard</strong></span> and its implementations, such as XML."</li>
+  <li>"The final goal of the new API is to be simple to use. The API will need to contain<span style="color:#993300;"><strong> some powerful features, but these must not be allowed to obscure the standard use cases</strong></span>. Part of being easy to use includes interaction with the existing Date and Calendar classes ..."</li>
+</ul>
+
+<h2>Origins of the JSR-310</h2>
+<ul>
+  <li>JSR-310 is "inspired from" the very popular <strong>Joda-Time</strong> library by <strong><em>Stephen Colebourne</em></strong><i>, </i>who is also the lead on JSR-310.</li>
+  <li>JSR-310 was a means to both overcome the shortcomings as well as refactor portions of the <strong>Joda-Time</strong>. <a href="http://blog.joda.org/2009/11/why-jsr-310-isn-joda-time_4941.html">http://blog.joda.org/2009/11/why-jsr-310-isn-joda-time_4941.html</a>.</li>
+  <li>Check out the cheatsheet from converting from <strong>Joda-Time</strong> to java.time apis: <a href="http://blog.joda.org/2014/11/convertingfrom-joda-time-to-javatime.html">http://blog.joda.org/2014/11/convertingfrom-joda-time-to-javatime.html</a></li>
+  <li>Also check out <strong><em>Meno Hochschild</em></strong>’s (author of the Time4J library) response at stack overflow: <a href="http://stackoverflow.com/questions/24631909/differences-between-java-8-date-time-apijava-time-and-joda-time">http://stackoverflow.com/questions/24631909/differences-between-java-8-date-time-apijava-time-and-joda-time</a></li>
+</ul>
+
+<h2>Java 8 Date Time API</h2>
+The Java classes in lavender below are all linked to the JDK 8 API. Please feel free to click.
+
+<h3>Date Time Classes</h3>
+
+<span style="padding-left:30px;"><strong>Dates and Times</strong>: Simple Date and Time ‘containers’</span>
+<ul style="padding-left:30px;">
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/time/Instant.html" target="_blank" rel="noopener"><code>Instant</code></a> stores a numeric timestamp from Java epoch, + nanoseconds.</li>
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html" target="_blank" rel="noopener"><code>LocalDate</code></a> stores a date without a time portion (calendar date).</li>
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/time/LocalTime.html" target="_blank" rel="noopener"><code>LocalTime</code></a> stores a time without a date portion (wall clock).</li>
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/time/LocalDateTime.html" target="_blank" rel="noopener"><code>LocalDateTime</code></a> stores a date and time (LocalDate + Local Time).</li>
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/time/ZonedDateTime.html" target="_blank" rel="noopener"><code>ZonedDateTime</code></a> stores a date and time with a time-zone.</li>
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/time/OffsetTime.html" target="_blank" rel="noopener"><code>OffsetTime</code></a> stores a time and offset from UTC without a date.</li>
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/time/OffsetDateTime.html" target="_blank" rel="noopener"><code>OffsetDateTime</code></a> stores a date with time and offset from UTC.</li>
+</ul>
+
+<span style="padding-left:30px;"><strong>Ranges and Partials</strong>: Spans and ranges of temporality</span>
+<ul style="padding-left:30px;">
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html" target="_blank" rel="noopener"><code>Duration</code></a> models time in nanoseconds for time intervals. (e.g. 5 mins)</li>
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/time/Period.html" target="_blank" rel="noopener"><code>Period</code></a> models amount of time in years, months and/or days. (e.g. 2 Days)</li>
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/time/Month.html" target="_blank" rel="noopener"><code>Month</code></a> stores a month on its own. (e.g. MARCH)</li>
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/time/MonthDay.html" target="_blank" rel="noopener"><code>MonthDay</code></a> stores a month and day without a year or time (e.g. date of birth)</li>
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/time/Year.html" target="_blank" rel="noopener"><code>Year</code></a> stores a year on its own. (e.g. 2015)</li>
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/time/YearMonth.html" target="_blank" rel="noopener"><code>YearMonth</code></a> stores a year and month without a day or time. (e.g. credit card expiry)</li>
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/time/DayOfWeek.html" target="_blank" rel="noopener"><code>DayOfWeek</code></a> stores a day-of-week on its own. (e.g. WEDNESDAY)</li>
+</ul>
+
+<span style="padding-left:30px;"><strong>Chronology</strong>: A calendar system to organize and identify dates</span>
+<ul style="padding-left:30px;">
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/time/chrono/Chronology.html" target="_blank" rel="noopener"><code>Chronology</code></a> is a factory to create or fetch pre-built calendar systems.
+    Default is <code>IsoChronology</code> (e.g. <code>ThaiBuddhistChronology</code>).</li>
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/time/chrono/ChronoLocalDate.html" target="_blank" rel="noopener"><code>ChronoLocalDate</code></a> stores a date without a time in an arbitrary chronology.</li>
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/time/chrono/ChronoLocalDateTime.html" target="_blank" rel="noopener"><code>ChronoLocalDateTime</code></a> stores a date and time in an arbitrary chronology.</li>
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/time/chrono/ChronoZonedDateTime.html" target="_blank" rel="noopener"><code>ChronoZonedDateTime</code></a> stores a date, time and timezone in an arbitrary chronology.</li>
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/time/chrono/ChronoPeriod.html" target="_blank" rel="noopener"><code>ChronoPeriod</code></a> models a span on days/time for use in an arbitrary chronology.</li>
+  <li><a href="https://docs.oracle.com/javase/8/docs/api/java/time/chrono/Era.html" target="_blank" rel="noopener"><code>Era</code></a> stores a timeline [typically two per <code>Chronology</code>, but some have more eras].</li>
+</ul>
+
+<h2>Date Time Common API - Reference Table</h2>
+
+<h3>Date and Time</h3>
+
+<table style="border-collapse:collapse;border:1px solid black;width:1000px">
+  <thead>
+  <tr style="background-color:coral;height:25px">
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:18%;"><b>Type</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:5%;"><b>Y</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:5%;"><b>M</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:5%;"><b>D</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:5%;"><b>H</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:5%;"><b>m</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:5%;"><b>S(n)</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:5%;"><b>Z</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:5%;"><b>ZId</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:42%;"><b>toString</b></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr style="height:25px">
+    <td style="border-collapse:collapse;border:1px solid black;"><code style="color:#000000;">Instant</code></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;vertical-align:middle;">1999-01-12T12:00:00.747Z</td>
+  </tr>
+  <tr style="height:25px">
+    <td style="border-collapse:collapse;border:1px solid black;"><code style="color:#000000;">LocalDate</code></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;vertical-align:middle;">1999-01-12</td>
+  </tr>
+  <tr style="height:25px">
+    <td style="border-collapse:collapse;border:1px solid black;"><code style="color:#000000;">LocalTime</code></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;vertical-align:middle;">12:00:00.747</td>
+  </tr>
+  <tr style="height:25px">
+    <td style="border-collapse:collapse;border:1px solid black;"><code style="color:#000000;">LocalDateTime</code></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;vertical-align:middle;">1999-01-12T12:00:00.747</td>
+  </tr>
+  <tr style="height:25px">
+    <td style="border-collapse:collapse;border:1px solid black;"><code style="color:#000000;">ZonedDateTime</code></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;vertical-align:middle;">1999-01-12T12:00:00.747-05:00 [America/New_York]</td>
+  </tr>
+  <tr style="height:25px">
+    <td style="border-collapse:collapse;border:1px solid black;"><code style="color:#000000;">OffsetTime</code></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;vertical-align:middle;">12:00:00.747-05:00</td>
+  </tr>
+  <tr style="height:25px">
+    <td style="border-collapse:collapse;border:1px solid black;"><code style="color:#000000;">OffsetDateTime</code></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;vertical-align:middle;">1999-01-12T12:00:00.747-05:00</td>
+  </tr>
+  </tbody>
+</table>
+
+<h3>Ranges</h3>
+<table style="border-collapse:collapse;border:1px solid black;width: 1000px">
+  <thead>
+  <tr style="background-color:coral;height: 25px">
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:18%;"><b>Type</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:5%;"><b>Y</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:5%;"><b>M</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:5%;"><b>D</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:5%;"><b>H</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:5%;"><b>m</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:5%;"><b>S(n)</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:5%;"><b>Z</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:5%;"><b>ZId</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:42%;"><b>toString</b></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr style="height:25px">
+    <td style="border-collapse:collapse;border:1px solid black;"><code style="color:#000000;">Duration</code></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;vertical-align:middle;">P22H</td>
+  </tr>
+  <tr style="height:25px">
+    <td style="border-collapse:collapse;border:1px solid black;"><code style="color:#000000;">Period</code></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;vertical-align:middle;">P15D</td>
+  </tr>
+  </tbody>
+</table>
+
+<h3>Partials</h3>
+<table style="border-collapse:collapse;border:1px solid black;width: 1000px">
+  <thead>
+  <tr style="background-color:coral;height: 25px">
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:18%;"><b>Type</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:5%;"><b>Y</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:5%;"><b>M</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:5%;"><b>D</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:5%;"><b>H</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:5%;"><b>m</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:5%;"><b>S(n)</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:5%;"><b>Z</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:5%;"><b>ZId</b></th>
+    <th style="vertical-align:middle;text-align:center;border-collapse:collapse;border:1px solid black;width:42%;"><b>toString</b></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr style="height:25px">
+    <td style="border-collapse:collapse;border:1px solid black;"><code style="color:#000000;">Month</code></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;text-align:center;background:cyan;">*</td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;vertical-align:middle;">JANUARY</td>
+  </tr>
+  <tr style="height:25px">
+    <td style="border-collapse:collapse;border:1px solid black;"><code style="color:#000000;">MonthDay</code></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;vertical-align:middle;">-01-12</td>
+  </tr>
+  <tr style="height:25px">
+    <td style="border-collapse:collapse;border:1px solid black;"><code style="color:#000000;">Year</code></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;vertical-align:middle;">1999</td>
+  </tr>
+  <tr style="height:25px">
+    <td style="border-collapse:collapse;border:1px solid black;"><code style="color:#000000;">YearMonth</code></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;background:cyan;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;vertical-align:middle;">1999-01</td>
+  </tr>
+  <tr style="height:25px">
+    <td style="border-collapse:collapse;border:1px solid black;"><code style="color:#000000;">DayOfWeek</code></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;text-align:center;background:cyan;">*</td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;"></td>
+    <td style="border-collapse:collapse;border:1px solid black;vertical-align:middle;">TUESDAY</td>
+  </tr>
+  </tbody>
+</table>
+
+<h2>Fluency and Symmetry in the new Date Time API</h2>
+The Java 8 Date Time API introduces a certain symmetry in operations that make for a pleasant developer experience. Below is a list of prefixes for methods across the API that perform in a similar pattern where encountered.
+
+<ul>
+  <li><strong>of</strong> {<em>static factory method prefix</em>} - Factory method to obtain an instance with provided parameters - validates and builds with no conversion.example usage: <code>LocalDate.of(...)</code> or <code>Instant.ofEpochSecond(...)</code>"</li>
+  <li><strong>from</strong> {<em>static factory method prefix</em>} - Factory method to obtain an instance with provided parameters - validates, converts and builds.example usage: <code>LocalDateTime.from(...)</code> or <code>OffsetTime.from(...)</code></li>
+  <li><strong>parse</strong> {<em>static factory method prefix</em>} - Factory method to obtain an instance with provided CharSequence parameters, by parsing the content.example usage: <code>LocalDate.parse(...)</code> or <code>OffsetDateTime.parse(...)</code></li>
+  <li><strong>format</strong> {<em>instance method prefix</em>} - Formats the instance with provided formatter.example usage: <code>localDate.format(formatter)</code></li>
+  <li><strong>get</strong> {<em>instance method prefix</em>} - Return part of the state of the target temporal object.example usage: <code>localDate.getDayOfWeek()</code></li>
+  <li><strong>is</strong> {<em>instance method prefix</em>} - Queries a part of the state of the target temporal objectexample usage: <code>localTime.isAfter(...)</code></li>
+  <li><strong>with</strong> {<em>instance method prefix</em>} - Returns a copy of the immutable temporal object with a portion altered. Alternate for a set operation.example usage: <code>offsetTime.withHour(...)</code></li>
+  <li><strong>plus</strong> {<em>instance method prefix</em>} - Return a copy of the temporal object with an added time.example usage: <code>localDate.plusWeeks(...)</code></li>
+  <li><strong>minus</strong> {<em>instance method prefix</em>} - Return a copy of the temporal object with subtracted time.example usage: <code>localTime.minusSeconds(...)</code></li>
+  <li><strong>to</strong> {<em>instance method prefix</em>} - Convert the temporal object into a new temporal object of another type.example usage: <code>localDateTime.toLocalDate(...)</code></li>
+  <li><strong>at</strong> {<em>instance method prefix</em>} - Combine the temporal object into a new temporal object with supplied parameters.example usage: <code>localDate.atTime(...)</code></li>
+</ul>
+
+<h2>KATA TIME !!!</h2>
+The Code for the Kata is located at: https://github.com/c-guntur/javasig-datetime
+
+Your mission, should you choose to accept it, is to:
+<ol>
+  <li>setup the kata using your favorite IDE</li>
+  <li>launch each JUnit test (Exercise1Test through Exercise5Test) and fix the tests, so all execute as instructed in the TODO above any commented lines.</li>
+  <li>repeat as often as necessary to build muscle memory of using the awesome Date Time API</li>
+</ol>
+There are solutions, but looking at solutions may limit your learning different ways of solving the same problem.
+<p/>
+Link to solutions: https://github.com/c-guntur/javasig-datetime-solutions
+<p/>
+I hope you found this post fun!
+<p/>
+Happy coding!
+</html>
