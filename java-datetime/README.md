@@ -1,6 +1,6 @@
 # javasig-datetime
 
-<img align="center" src="docs/DukeTime.png" alt="Java Duke Date Time Logo" title="Java Duke Date Time" hspace="20" width="480"/>
+<img align="center" src="docs/DukeTime.png" alt="Java Duke Date Time Logo" title="Java Duke Date Time" hspace="20" height="420"/>
 
 ## Table of Contents
 * [What is a Code Kata](#WhatIsACodeKata)
