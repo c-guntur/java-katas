@@ -12,7 +12,7 @@
     </parent>
 
     <artifactId>java-optional</artifactId>
-    <name>Code Kata : Java Optional</name>
+    <name>Code Kata : Java Optionals API</name>
     <url>http://cguntur.me</url>
 
     <dependencies>

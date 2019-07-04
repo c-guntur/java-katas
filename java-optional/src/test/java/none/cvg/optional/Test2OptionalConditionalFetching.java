@@ -10,6 +10,8 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -35,7 +37,7 @@ public class Test2OptionalConditionalFetching {
 
     @Test
     @DisplayName("return an Optional of either a non-null value or from a Supplier")
-    @Tag("PASSING")
+    @Tag("TODO")
     @Order(1)
     public void orReturnOptional() {
 
@@ -59,7 +61,7 @@ public class Test2OptionalConditionalFetching {
 
     @Test
     @DisplayName("return either a value from non-empty Optional or a default value")
-    @Tag("PASSING")
+    @Tag("TODO")
     @Order(2)
     public void orElseReturnValue() {
 
@@ -84,7 +86,7 @@ public class Test2OptionalConditionalFetching {
 
     @Test
     @DisplayName("return a value either from non-empty Optional or from a Supplier")
-    @Tag("PASSING")
+    @Tag("TODO")
     @Order(3)
     public void orElseGetSupplierValue() {
 
@@ -109,7 +111,7 @@ public class Test2OptionalConditionalFetching {
 
     @Test
     @DisplayName("return a value either from non-empty Optional or throw Exception")
-    @Tag("PASSING")
+    @Tag("TODO")
     @Order(4)
     public void orElseThrowReplacesOptionalGet() {
 
@@ -137,7 +139,7 @@ public class Test2OptionalConditionalFetching {
 
     @Test
     @DisplayName("return a value either from non-empty Optional or throw Custom Exception")
-    @Tag("PASSING")
+    @Tag("TODO")
     @Order(5)
     public void orElseThrowCustomException() {
 
@@ -149,19 +151,55 @@ public class Test2OptionalConditionalFetching {
 
         /*
          * TODO:
-         *  Replace the below to use an orElseThrow(?) - instead of - the get()
+         *  Replace the below to use an orElseThrow() - instead of - the get()
          *  Check API: java.util.Optional.orElseThrow(?)
          */
         Exception caughtException = assertThrows(
                 RuntimeException.class,
                 () -> {
                     String nonNullString = null;
+
                 });
 
         assertEquals("Empty value",
                 caughtException.getMessage(),
                 "The custom exception should have benn thrown");
 
+    }
+
+    @Test
+    @DisplayName("perform action with value if non-empty else perform empty action")
+    @Tag("TODO")
+    @Order(6)
+    public void ifPresentConsumeOrElseOtherAction() {
+        AtomicInteger nonEmptyValueCounter = new AtomicInteger(0);
+
+        Consumer<Integer> nonEmptyValueAction = x -> nonEmptyValueCounter.getAndAdd(x);
+        Runnable alternateAction = nonEmptyValueCounter::getAndDecrement;
+
+        Optional<Integer> nonEmptyIntegerOptional = Optional.of(10);
+
+        /*
+         * TODO:
+         *  Add an ifPresentOrElse call to run either the nonEmptyValueAction or alternateAction
+         *  (depending on whether the optional has a value or not)
+         *  Check API: java.util.Optional.ifPresentOrElse(?, ?)
+         */
+//        nonEmptyIntegerOptional.???;
+
+        assertEquals(10, nonEmptyValueCounter.get(), "");
+
+        Optional<Integer> emptyIntegerOptional = Optional.ofNullable(null);
+
+        /*
+         * TODO:
+         *  Add an ifPresentOrElse call to run either the nonEmptyValueAction or alternateAction
+         *  (depending on whether the optional has a value or not)
+         *  Check API: java.util.Optional.ifPresentOrElse(?, ?)
+         */
+//        emptyIntegerOptional.???
+
+        assertEquals(9, nonEmptyValueCounter.get(), "");
     }
 
 }

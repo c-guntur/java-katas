@@ -152,7 +152,7 @@ public class STest2OptionalConditionalFetching {
         /*
          * DONE:
          *  Replace the below to use an orElseThrow() - instead of - the get()
-         *  Check API: java.util.Optional.orElseThrow()
+         *  Check API: java.util.Optional.orElseThrow(?)
          */
         Exception caughtException = assertThrows(
                 RuntimeException.class,
@@ -177,12 +177,26 @@ public class STest2OptionalConditionalFetching {
         Consumer<Integer> nonEmptyValueAction = x -> nonEmptyValueCounter.getAndAdd(x);
         Runnable alternateAction = nonEmptyValueCounter::getAndDecrement;
 
-        Optional nonEmptyIntegerOptional = Optional.of(10);
+        Optional<Integer> nonEmptyIntegerOptional = Optional.of(10);
+
+        /*
+         * DONE:
+         *  Add an ifPresentOrElse call to run either the nonEmptyValueAction or alternateAction
+         *  (depending on whether the optional has a value or not)
+         *  Check API: java.util.Optional.ifPresentOrElse(?, ?)
+         */
         nonEmptyIntegerOptional.ifPresentOrElse(nonEmptyValueAction, alternateAction);
 
         assertEquals(10, nonEmptyValueCounter.get(), "");
 
-        Optional emptyIntegerOptional = Optional.ofNullable(null);
+        Optional<Integer> emptyIntegerOptional = Optional.ofNullable(null);
+
+        /*
+         * DONE:
+         *  Add an ifPresentOrElse call to run either the nonEmptyValueAction or alternateAction
+         *  (depending on whether the optional has a value or not)
+         *  Check API: java.util.Optional.ifPresentOrElse(?, ?)
+         */
         emptyIntegerOptional.ifPresentOrElse(nonEmptyValueAction, alternateAction);
 
         assertEquals(9, nonEmptyValueCounter.get(), "");

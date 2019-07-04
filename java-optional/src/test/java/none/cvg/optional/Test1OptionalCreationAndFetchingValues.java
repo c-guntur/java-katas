@@ -99,7 +99,7 @@ public class Test1OptionalCreationAndFetchingValues {
 
     @Test
     @DisplayName("check a non-null Optional has a value")
-    @Tag("PASSING")
+    @Tag("TODO")
     @Order(4)
     public void checkOptionalForNonNullValueIsPresent() {
 
@@ -132,7 +132,7 @@ public class Test1OptionalCreationAndFetchingValues {
 
     @Test
     @DisplayName("fetch from a non-null and from a null holding Optional")
-    @Tag("PASSING")
+    @Tag("TODO")
     @Order(5)
     public void getValueFromOptionalForNonNullValue() {
 
@@ -160,7 +160,6 @@ public class Test1OptionalCreationAndFetchingValues {
          *  Verify that the call throws a NoSuchElementException
          *  Check API: java.util.Optional.isPresent()
          */
-
         assertThrows(NoSuchElementException.class, () -> {
 
             assertNotEquals(10,
