@@ -1,2 +1,5 @@
 # java-katas
-One repo to rule them all. All Java Katas with JUnit 5 based testing
+
+<img align="center" src="JavaKatas.png" alt="Java Katas Logo" title="Java Katas" hspace="20" height="420"/>
+
+One repo to rule them all. Java code katas - using JUnit5
