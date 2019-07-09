@@ -26,7 +26,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  *
  *  empty(), of(?), ofNullable(?), isPresent(), get()
  */
-@DisplayNameGeneration(KataDisplayNames.class)
 @DisplayName("java.util.Optional Creation And Getting value")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class STest1OptionalCreationAndFetchingValues {
