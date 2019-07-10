@@ -1,0 +1,12 @@
+dist: xenial
+language: java
+#jdk: openjdk11 # JDK 11 is default JDK on Travis' xenial image
+
+install: true
+
+script:
+- mvn verify
+
+cache:
+  directories:
+  - $HOME/.m2
