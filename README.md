@@ -22,7 +22,7 @@ This Git repo is a collection of several code katas about features, utilities an
 
 The general structure of each project is a maven quickstart project with a pom.xml, a src directory that contains at least two directories. Code Katas are available under the src/test/java while solutions are under src/solutions/java under each module. The code katas typically contain failing tests with TODO markers that need to be fixed in order to fix the test, 
 
-**Remember, the solutions may not be the perfect solution, maybe a solution you come up with is better**. Feel free to submit a pull request if you think you have a better solition than the one you find.
+**Remember, the src/solutions may not be the perfect way to solve the kata, maybe a solution you come up with is better**. Feel free to submit a pull request if you think you have a better solition than the one you find.
 
 ### Current Katas
 
