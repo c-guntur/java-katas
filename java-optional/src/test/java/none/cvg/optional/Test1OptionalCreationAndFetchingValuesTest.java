@@ -1,16 +1,15 @@
 package none.cvg.optional;
 
-import java.util.NoSuchElementException;
-import java.util.Optional;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -19,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /*
- * DONE:
+ * TODO:
  *  This test aims at understanding the basic features of Optional
  *  Each unsolved test provides a few hints that will allow the kata-taker to manually solve
  *  the exercise.
@@ -28,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 @DisplayName("java.util.Optional Creation And Getting value")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class STest1OptionalCreationAndFetchingValues {
+public class Test1OptionalCreationAndFetchingValuesTest {
 
     @BeforeEach
     public void setUp() {
@@ -36,16 +35,16 @@ public class STest1OptionalCreationAndFetchingValues {
 
     @Test
     @DisplayName("create an empty Optional")
-    @Tag("PASSING")
+    @Tag("TODO")
     @Order(1)
     public void emptyOptional() {
 
         /*
-         * DONE:
+         * TODO:
          *  Replace the "null" to create an empty Optional.
          *  Check API: java.util.Optional.empty()
          */
-        Optional<String> optionalEmptyString = Optional.empty();
+        Optional<String> optionalEmptyString = null;
 
         assertTrue(optionalEmptyString instanceof Optional,
                 "The optionalEmptyString should be an instance of Optional");
@@ -56,18 +55,18 @@ public class STest1OptionalCreationAndFetchingValues {
 
     @Test
     @DisplayName("create an Optional from a variable")
-    @Tag("PASSING")
+    @Tag("TODO")
     @Order(2)
     public void createOptionalFromValue() {
 
         Integer anInteger = 10;
 
         /*
-         * DONE:
+         * TODO:
          *  Replace the "null" to create an Optional for anInteger.
          *  Check API: java.util.Optional.of(?)
          */
-        Optional<Integer> optionalForInteger = Optional.of(anInteger);
+        Optional<Integer> optionalForInteger = null;
 
         assertTrue(optionalForInteger instanceof Optional,
                 "The optionalEmptyString should be an instance of Optional");
@@ -78,18 +77,18 @@ public class STest1OptionalCreationAndFetchingValues {
 
     @Test
     @DisplayName("create a nullable Optional from a variable")
-    @Tag("PASSING")
+    @Tag("TODO")
     @Order(3)
     public void createNullableOptionalFromValue() {
 
         Integer anInteger = null;
 
         /*
-         * DONE:
+         * TODO:
          *  Replace the "null" to create a nullable Optional for anInteger.
          *  Check API: java.util.Optional.ofNullable(?)
          */
-        Optional<Integer> optionalNullableInteger = Optional.ofNullable(anInteger);
+        Optional<Integer> optionalNullableInteger = Optional.of(10);
 
         assertTrue(optionalNullableInteger instanceof Optional,
                 "The optionalNullableInteger should be an instance of Optional");
@@ -100,7 +99,7 @@ public class STest1OptionalCreationAndFetchingValues {
 
     @Test
     @DisplayName("check a non-null Optional has a value")
-    @Tag("PASSING")
+    @Tag("TODO")
     @Order(4)
     public void checkOptionalForNonNullValueIsPresent() {
 
@@ -109,11 +108,11 @@ public class STest1OptionalCreationAndFetchingValues {
         Optional<Integer> optionalInteger = Optional.ofNullable(anInteger);
 
         /*
-         * DONE:
+         * TODO:
          *  Replace the "false" to check that the Optional has a non-null value.
          *  Check API: java.util.Optional.isPresent()
          */
-        assertTrue(optionalInteger.isPresent(),
+        assertTrue(false,
                 "The optionalNullableInteger should be present");
 
 
@@ -122,18 +121,18 @@ public class STest1OptionalCreationAndFetchingValues {
         optionalInteger = Optional.ofNullable(anInteger);
 
         /*
-         * DONE:
+         * TODO:
          *  Replace the "false" to check that the Optional has a non-null value.
          *  Check API: java.util.Optional.isPresent()
          */
-        assertFalse(optionalInteger.isPresent(),
+        assertFalse(true,
                 "The optionalNullableInteger should not be present");
 
     }
 
     @Test
     @DisplayName("fetch from a non-null and from a null holding Optional")
-    @Tag("PASSING")
+    @Tag("TODO")
     @Order(5)
     public void getValueFromOptionalForNonNullValue() {
 
@@ -142,12 +141,12 @@ public class STest1OptionalCreationAndFetchingValues {
         Optional<Integer> optionalInteger = Optional.ofNullable(anInteger);
 
         /*
-         * DONE:
-         *  Replace the "null" to check that the Optional has a non-null value.
+         * TODO:
+         *  Replace the "11" to check that the Optional has a non-null value.
          *  Check API: java.util.Optional.get()
          */
         assertEquals(10,
-                optionalInteger.get(),
+                11,
                 "The optionalNullableInteger should be present");
 
 
@@ -156,7 +155,7 @@ public class STest1OptionalCreationAndFetchingValues {
         Optional<Integer> anotherOptionalInteger = Optional.ofNullable(anInteger);
 
         /*
-         * DONE:
+         * TODO:
          *  Replace the "null" to get the Optional has a null value.
          *  Verify that the call throws a NoSuchElementException
          *  Check API: java.util.Optional.isPresent()
@@ -164,7 +163,7 @@ public class STest1OptionalCreationAndFetchingValues {
         assertThrows(NoSuchElementException.class, () -> {
 
             assertNotEquals(10,
-                    anotherOptionalInteger.get(),
+                    10,
                     "This call should throw a NoSuchElementException");
         });
 

@@ -28,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 @DisplayName("Optional - using Optionals in collections with Stream API")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class Test3StreamsAndOptionals {
+public class Test3StreamsAndOptionalsTest {
 
     private Set<NameValuePair> expectedSetOfNameValuePairs;
     private Set<String> namesSet = new HashSet<>();
