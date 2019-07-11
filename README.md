@@ -1,5 +1,7 @@
 [![][travis img]][travis]
 [![][license-mit img]][license-mit]
+[![][project-type img]][project-type]
+
 
 # java-katas
 
@@ -41,4 +43,5 @@ More katas will be added, feel free to contribute if you have ideas.
 [license-mit]:LICENSE
 [license-mit img]:https://img.shields.io/badge/License-MIT-lightsalmon.svg
 
-
+[project-type]:http://codekata.com/
+[project-type img]:https://img.shields.io/badge/CodeKata-Java-blue.svg
