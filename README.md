@@ -1,3 +1,5 @@
+https://travis-ci.org/c-guntur/java-katas.svg?branch=master
+
 # java-katas
 
 <img align="center" src="JavaKatas.png" alt="Java Katas Logo" title="Java Katas" hspace="20" height="420"/>
