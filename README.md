@@ -1,4 +1,5 @@
-https://travis-ci.org/c-guntur/java-katas.svg?branch=master
+[![][travis img]][travis]
+[![][license-mit img]][license-mit]
 
 # java-katas
 
@@ -33,3 +34,11 @@ The general structure of each project is a maven quickstart project with a pom.x
 1. `java-optionals`: This Kata is for learning the Java Optional API, as a repacement for null-checks and unexpected `NullPointerException`s that crop up causing developer unhappiness and/or application instability issues.
 
 More katas will be added, feel free to contribute if you have ideas.
+
+[travis]:https://travis-ci.org/c-guntur/java-katas
+[travis img]:https://travis-ci.org/c-guntur/java-katas.svg?branch=master
+
+[license-mit]:LICENSE
+[license-mit img]:https://img.shields.io/badge/License-MIT-lightsalmon.svg
+
+
