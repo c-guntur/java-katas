@@ -29,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 @DisplayName("Optional - conditional fetch non-null value or alternative")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class Test2OptionalConditionalFetching {
+public class Test2OptionalConditionalFetchingTest {
 
     @BeforeEach
     public void setUp() {
