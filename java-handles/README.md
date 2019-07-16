@@ -111,33 +111,33 @@ There are a few JUnit tests with an aim to practice method access alternates to 
 
 #### Constructor invocation
 
-1. ##### [DefaultConstructorInvocationTest.java](src/test/java/none/cvg/constructors/DefaultConstructorInvocationTest.java)
+1. ##### [TestKataDefaultConstructorInvocation.java](src/test/java/none/cvg/constructors/TestKataDefaultConstructorInvocation.java)
 
    This test aims at using MethodHandles to invoke a **default constructor** on a class in order to create a new instance. 
 
-1. ##### [ParameteredConstructorInvocationTest.java](src/test/java/none/cvg/constructors/ParameteredConstructorInvocationTest.java) 
+1. ##### [TestKataParameteredConstructorInvocation.java](src/test/java/none/cvg/constructors/TestKataParameteredConstructorInvocation.java) 
 
    This test aims at using MethodHandles to invoke a **constructor with a parameter** on a class in order to create a new instance. 
 
 #### Method invocation
 
-1. ##### [PublicMethodInvocationTest.java](src/test/java/none/cvg/methods/PublicMethodInvocationTest.java)
+1. ##### [TestKataPublicMethodInvocation.java](src/test/java/none/cvg/methods/TestKataPublicMethodInvocation.java)
 
    This test aims at using MethodHandles to invoke a **public method** on a class. 
 
-1. ##### [PackageProtectedMethodInvocationTest.java](src/test/java/none/cvg/methods/PackageProtectedMethodInvocationTest.java)
+1. ##### [TestKataPackageProtectedMethodInvocation.java](src/test/java/none/cvg/methods/TestKataPackageProtectedMethodInvocation.java)
 
    This test aims at using MethodHandles to invoke a **package-protected (default-access) method** on a class. 
 
-1. ##### [ProtectedMethodInvocationTest.java](src/test/java/none/cvg/methods/ProtectedMethodInvocationTest.java)
+1. ##### [TestKataProtectedMethodInvocation.java](src/test/java/none/cvg/methods/TestKataProtectedMethodInvocation.java)
 
    This test aims at using MethodHandles to invoke a **protected method** on a class. 
 
-1. ##### [PrivateMethodInvocationTest.java](src/test/java/none/cvg/methods/PrivateMethodInvocationTest.java)
+1. ##### [TestKataPrivateMethodInvocation.java](src/test/java/none/cvg/methods/TestKataPrivateMethodInvocation.java)
 
    This test aims at using MethodHandles to invoke a **private method** on a class. 
 
-1. ##### [PublicStaticMethodInvocationTest.java](src/test/java/none/cvg/methods/PublicStaticMethodInvocationTest.java)
+1. ##### [TestKataPublicStaticMethodInvocation.java](src/test/java/none/cvg/methods/TestKataPublicStaticMethodInvocation.java)
 
    This test aims at using MethodHandles to invoke a **public static method** on a class. 
 
@@ -149,7 +149,7 @@ There are a few JUnit tests with an aim to practice variable access alternates t
 
 1. #### Get variable values
 
-      ##### [GetterTest.java](src/test/java/none/cvg/variables/GetterTest.java)
+      ##### [TestKataGetter.java](src/test/java/none/cvg/variables/TestKataGetter.java)
    
       This test aims at showing the differences between traditional reflection/Unsafe usage and the Handles API. 
       
@@ -162,7 +162,7 @@ There are a few JUnit tests with an aim to practice variable access alternates t
 
 1. #### Compare and Set variable values
 
-      ##### [CompareAndSet.java](src/test/java/none/cvg/variables/CompareAndSetTest.java)
+      ##### [TestKataCompareAndSet.java](src/test/java/none/cvg/variables/TestKataCompareAndSet.java)
 
       This test aims at showing the differences between traditional reflection/Unsafe usage and the Handles API. 
 
@@ -175,7 +175,7 @@ There are a few JUnit tests with an aim to practice variable access alternates t
       
 1. #### Var Handles restrictions that were possible with Unsafe
 
-      ##### [VarHandlesForbiddenUnsafeFeaturesTest.java](src/test/java/none/cvg/variables/VarHandlesForbiddenUnsafeFeaturesTest.java)
+      ##### [TestKataVarHandlesForbiddenUnsafeFeatures.java](src/test/java/none/cvg/variables/TestKataVarHandlesForbiddenUnsafeFeatures.java)
 
       This test aims at highlighting functionality available with Reflection/Unsafe that no longer are available using VarHandles.
 
@@ -191,18 +191,18 @@ Solutions for each test:
 
 Kata Test | Solution
 ------------ | -------------
-[DefaultConstructorInvocationTest.java](src/test/java/none/cvg/constructors/DefaultConstructorInvocationTest.java) | [SDefaultConstructorInvocationTest.java](src/solutions/java/none/cvg/constructors/SDefaultConstructorInvocationTest.java)
-[ParameteredConstructorInvocationTest.java](src/test/java/none/cvg/constructors/ParameteredConstructorInvocationTest.java) | [SParameteredConstructorInvocationTest.java](src/solutions/java/none/cvg/constructors/SParameteredConstructorInvocationTest.java)
+[TestKataDefaultConstructorInvocation.java](src/test/java/none/cvg/constructors/TestKataDefaultConstructorInvocation.java) | [TestSolutionDefaultConstructorInvocation.java](src/solutions/java/none/cvg/constructors/TestSolutionDefaultConstructorInvocation.java)
+[TestKataParameteredConstructorInvocation.java](src/test/java/none/cvg/constructors/TestKataParameteredConstructorInvocation.java) | [TestSolutionParameteredConstructorInvocation.java](src/solutions/java/none/cvg/constructors/TestSolutionParameteredConstructorInvocation.java)
 ---- | ----
-[PublicMethodInvocationTest.java](src/test/java/none/cvg/methods/PublicMethodInvocationTest.java) | [SPublicMethodInvocationTest.java](src/solutions/java/none/cvg/methods/SPublicMethodInvocationTest.java)
-[PackageProtectedMethodInvocationTest.java](src/test/java/none/cvg/methods/PackageProtectedMethodInvocationTest.java) | [SPackageProtectedMethodInvocationTest.java](src/solutions/java/none/cvg/methods/SPackageProtectedMethodInvocationTest.java)
-[ProtectedMethodInvocationTest.java](src/test/java/none/cvg/methods/ProtectedMethodInvocationTest.java) | [SProtectedMethodInvocationTest.java](src/solutions/java/none/cvg/methods/SProtectedMethodInvocationTest.java)
-[PrivateMethodInvocationTest.java](src/test/java/none/cvg/methods/PrivateMethodInvocationTest.java) | [SPrivateMethodInvocationTest.java](src/solutions/java/none/cvg/methods/SPrivateMethodInvocationTest.java)
-[PublicStaticMethodInvocationTest.java](src/test/java/none/cvg/methods/PublicStaticMethodInvocationTest.java) | [SPublicStaticMethodInvocationTest.java](src/solutions/java/none/cvg/methods/SPublicStaticMethodInvocationTest.java)
+[TestKataPublicMethodInvocation.java](src/test/java/none/cvg/methods/TestKataPublicMethodInvocation.java) | [TestSolutionPublicMethodInvocation.java](src/solutions/java/none/cvg/methods/TestSolutionPublicMethodInvocation.java)
+[TestKataPackageProtectedMethodInvocation.java](src/test/java/none/cvg/methods/TestKataPackageProtectedMethodInvocation.java) | [TestSolutionPackageProtectedMethodInvocation.java](src/solutions/java/none/cvg/methods/TestSolutionPackageProtectedMethodInvocation.java)
+[TestKataProtectedMethodInvocation.java](src/test/java/none/cvg/methods/TestKataProtectedMethodInvocation.java) | [TestSolutionProtectedMethodInvocation.java](src/solutions/java/none/cvg/methods/TestSolutionProtectedMethodInvocation.java)
+[TestKataPrivateMethodInvocation.java](src/test/java/none/cvg/methods/TestKataPrivateMethodInvocation.java) | [TestSolutionPrivateMethodInvocation.java](src/solutions/java/none/cvg/methods/TestSolutionPrivateMethodInvocation.java)
+[TestKataPublicStaticMethodInvocation.java](src/test/java/none/cvg/methods/TestKataPublicStaticMethodInvocation.java) | [TestSolutionPublicStaticMethodInvocation.java](src/solutions/java/none/cvg/methods/TestSolutionPublicStaticMethodInvocation.java)
 ---- | ----
-[GetterTest.java](src/test/java/none/cvg/variables/GetterTest.java) | [SGetterTest.java](src/solutions/java/none/cvg/variables/SGetterTest.java)
-[CompareAndSetTest.java](src/test/java/none/cvg/variables/CompareAndSetTest.java) | [SCompareAndSetTest.java](src/solutions/java/none/cvg/variables/SCompareAndSetTest.java)
-[VarHandlesForbiddenUnsafeFeaturesTest.java](src/test/java/none/cvg/variables/VarHandlesForbiddenUnsafeFeaturesTest.java) | [SVarHandlesForbiddenUnsafeFeaturesTest.java](src/solutions/java/none/cvg/variables/VarHandlesForbiddenUnsafeFeaturesTest.java)
+[TestKataGetter.java](src/test/java/none/cvg/variables/TestKataGetter.java) | [TestSolutionGetter.java](src/solutions/java/none/cvg/variables/TestSolutionGetter.java)
+[TestKataCompareAndSet.java](src/test/java/none/cvg/variables/TestKataCompareAndSet.java) | [TestSolutionCompareAndSet.java](src/solutions/java/none/cvg/variables/TestSolutionCompareAndSet.java)
+[TestKataVarHandlesForbiddenUnsafeFeatures.java](src/test/java/none/cvg/variables/TestKataVarHandlesForbiddenUnsafeFeatures.java) | [TestSolutionVarHandlesForbiddenUnsafeFeatures.java](src/solutions/java/none/cvg/variables/TestSolutionVarHandlesForbiddenUnsafeFeatures.java)
     
 
 ## <a name="TakeAway"></a>Take Away
