@@ -92,7 +92,7 @@ The JUnit tests listed below are setup to utilize the Java Time API features.
 
 #### Java Date Time
 
-1. ##### [TestKata1InstantAndDateInterop](src/test/java/none/cvg/datetime/TestKata1InstantAndDateInterop.java)
+1. ##### [TestKata1InstantAndDateInterop.java](src/test/java/none/cvg/datetime/TestKata1InstantAndDateInterop.java)
 
    The tests in this class show interoperability between `java.util.Date` and the newer `java.time.Instant`. 
 
@@ -120,11 +120,11 @@ Solutions for each test:
 
 Kata Test | Solution
 ------------ | -------------
-[TestKata1InstantAndDateInterop](src/test/java/none/cvg/datetime/TestKata1InstantAndDateInterop.java) | [TestSolution1InstantAndDateInterop.java](src/solutions/java/none/cvg/datetime/TestSolution1InstantAndDateInterop.java)
-[TestKata2LocalAndZonedDateTimes](src/test/java/none/cvg/datetime/TestKata2LocalAndZonedDateTimes.java) | [TestSolution2LocalAndZonedDateTimes.java](src/solutions/java/none/cvg/datetime/TestSolution2LocalAndZonedDateTimes.java)
-[TestKata3PeriodsAndDurations](src/test/java/none/cvg/datetime/TestKata3PeriodsAndDurations.java) | [TestSolution3PeriodsAndDurations.java](src/solutions/java/none/cvg/datetime/TestSolution3PeriodsAndDurations.java)
-[TestKata4DateTimePartials](src/test/java/none/cvg/datetime/TestKata4DateTimePartials.java) | [TestSolution4DateTimePartials.java](src/solutions/java/none/cvg/datetime/TestSolution4DateTimePartials.java)
-[TestKata5StreamsInDateTime](src/test/java/none/cvg/datetime/TestKata5StreamsInDateTime.java) | [TestSolution5StreamsInDateTime.java](src/solutions/java/none/cvg/datetime/TestSolution5StreamsInDateTime.java)
+[TestKata1InstantAndDateInterop.java](src/test/java/none/cvg/datetime/TestKata1InstantAndDateInterop.java) | [TestSolution1InstantAndDateInterop.java](src/solutions/java/none/cvg/datetime/TestSolution1InstantAndDateInterop.java)
+[TestKata2LocalAndZonedDateTimes.java](src/test/java/none/cvg/datetime/TestKata2LocalAndZonedDateTimes.java) | [TestSolution2LocalAndZonedDateTimes.java](src/solutions/java/none/cvg/datetime/TestSolution2LocalAndZonedDateTimes.java)
+[TestKata3PeriodsAndDurations.java](src/test/java/none/cvg/datetime/TestKata3PeriodsAndDurations.java) | [TestSolution3PeriodsAndDurations.java](src/solutions/java/none/cvg/datetime/TestSolution3PeriodsAndDurations.java)
+[TestKata4DateTimePartials.java](src/test/java/none/cvg/datetime/TestKata4DateTimePartials.java) | [TestSolution4DateTimePartials.java](src/solutions/java/none/cvg/datetime/TestSolution4DateTimePartials.java)
+[TestKata5StreamsInDateTime.java](src/test/java/none/cvg/datetime/TestKata5StreamsInDateTime.java) | [TestSolution5StreamsInDateTime.java](src/solutions/java/none/cvg/datetime/TestSolution5StreamsInDateTime.java)
     
 
 ## <a name="TakeAway"></a>Take Away
