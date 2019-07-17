@@ -107,15 +107,15 @@ The JUnit tests listed below are setup to utilize the Java Optional API features
 
 #### Java Optional
 
-1. ##### [Test1OptionalCreationAndFetchingValuesTest.java](src/test/java/none/cvg/optional/Test1OptionalCreationAndFetchingValuesTest.java)
+1. ##### [TestKata1OptionalCreationAndFetchingValues.java](src/test/java/none/cvg/optional/TestKata1OptionalCreationAndFetchingValues.java)
 
    The tests in this class show creation of and fetching value from an Optional. 
 
-1. ##### [Test2OptionalConditionalFetchingTest.java](src/test/java/none/cvg/optional/Test2OptionalConditionalFetchingTest.java) 
+1. ##### [TestKata2OptionalConditionalFetching.java](src/test/java/none/cvg/optional/TestKata2OptionalConditionalFetching.java) 
 
    The tests in this class show conditional checks and alternate actions when fetching values from an Optional. 
 
-1. ##### [Test3StreamsAndOptionalsTest.java](src/test/java/none/cvg/optional/Test3StreamsAndOptionalsTest.java)
+1. ##### [TestKata3StreamsAndOptionals.java](src/test/java/none/cvg/optional/TestKata3StreamsAndOptionals.java)
 
    The tests in this class show the usage of Optional in Java Stream API. 
 
@@ -126,9 +126,9 @@ Solutions for each test:
 
 Kata Test | Solution
 ------------ | -------------
-[Test1OptionalCreationAndFetchingValuesTest.java](src/test/java/none/cvg/optional/Test1OptionalCreationAndFetchingValuesTest.java) | [STest1OptionalCreationAndFetchingValuesTest.java](src/solutions/java/none/cvg/optional/STest1OptionalCreationAndFetchingValuesTest.java)
-[Test2OptionalConditionalFetchingTest.java](src/test/java/none/cvg/optional/Test2OptionalConditionalFetchingTest.java) | [STest2OptionalConditionalFetchingTest.java](src/solutions/java/none/cvg/optional/STest2OptionalConditionalFetchingTest.java)
-[Test3StreamsAndOptionalsTest.java](src/test/java/none/cvg/optional/Test3StreamsAndOptionalsTest.java) | [STest3StreamsAndOptionalsTest.java](src/solutions/java/none/cvg/optional/STest3StreamsAndOptionalsTest.java)
+[TestKata1OptionalCreationAndFetchingValues.java](src/test/java/none/cvg/optional/TestKata1OptionalCreationAndFetchingValues.java) | [TestSolution1OptionalCreationAndFetchingValues.java](src/solutions/java/none/cvg/optional/TestSolution1OptionalCreationAndFetchingValues.java)
+[TestKata2OptionalConditionalFetching.java](src/test/java/none/cvg/optional/TestKata2OptionalConditionalFetching.java) | [TestSolution2OptionalConditionalFetching.java](src/solutions/java/none/cvg/optional/TestSolution2OptionalConditionalFetching.java)
+[TestKata3StreamsAndOptionals.java](src/test/java/none/cvg/optional/TestKata3StreamsAndOptionals.java) | [TestSolution3StreamsAndOptionals.java](src/solutions/java/none/cvg/optional/TestSolution3StreamsAndOptionals.java)
     
 
 ## <a name="TakeAway"></a>Take Away
