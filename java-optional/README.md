@@ -10,7 +10,7 @@
   * [Mission](#Mission)
   * [Requirements](#Requirements)
 * [Project Structure](#ProjectStructure)
-* [Java Time API](#JavaTime)
+* [Java Optional API](#JavaOptional)
 * [Solutions to the Katas](#Solutions)
 * [Take Away](#TakeAway)
 
@@ -99,7 +99,7 @@ The structure of the project:
 | |       |____optional
 ```
 
-## <a name="JavaTime"></a>Java Time API
+## <a name="JavaOptional"></a>Java Optional API
 
 The JUnit tests listed below are setup to utilize the Java Optional API features.
 
