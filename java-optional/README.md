@@ -10,7 +10,7 @@
   * [Mission](#Mission)
   * [Requirements](#Requirements)
 * [Project Structure](#ProjectStructure)
-* [Java Time API](#JavaTime)
+* [Java Optional API](#JavaOptional)
 * [Solutions to the Katas](#Solutions)
 * [Take Away](#TakeAway)
 
