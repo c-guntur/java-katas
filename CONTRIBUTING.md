@@ -1,5 +1,50 @@
 # Contributing
 
+Thank you for your interest in contributing to this set of Code Katas !
+
+## Contribution Guide
+
+### Build policy
+
+The Code Katas in this repository are arranged as independent maven projects that can be orchestrated or built together using the aggregator and **parent pom** pom.xml at the root of the project. The parent pom (located at the root of the project) defines a few properties used throughout (such as the *JUnit version* and the *Java compiler's source and target* version). In addition, some common build plugins are configured under the `pluginManagement` section of the parent pom.
+
+**REQUIREMENT**: The individual Kata projects should remain independent build targets and should not depend on any other module or kata for a successful build.
+
+### Kata structure
+
+Irrespective of the contribution style (a full module or enhancement/bug fix to existing module), here are some requirements:
+
+#### General Project Structure
+
+The project layout in the every Code Kata is similar. Here is a tree structure to explain:
+```
+|____pom.xml                   <------------------- Project pom, using the java-katas/pom.xml as parent
+|____README.md                 <------------------- Well documented README, with links to tests & solutions
+|
+|____src
+| |
+| |____test                    <------------------- Kata Tests
+| | |____java
+| |   |____none
+| |     |____cvg
+| |       |____<kata package>  <------------------- Name the package that corresponds to the kata.
+| |       |____<kata pkg 2>    <------------------- Optional multiple packages if the kata covers more sections
+| |
+| |____main                    <------------------- Shared content (re-used in both tests and solutions)
+| | |____java
+| |   |____none
+| |     |____cvg
+| |
+| |____solutions               <------------------- Solutions 
+| | |____java
+| |   |____none
+| |     |____cvg
+| |       |____<kata package>  <------------------- Name the package that corresponds to the kata.
+| |       |____<kata pkg 2>    <------------------- Optional multiple packages if the kata covers more sections
+
+```
+**REQUIREMENT**: The Code Kata project structure should comply with the setup of a `test` folder with failing tests and a `solution` folder with solved working tests.
+
 When contributing to this repository, please first discuss the change you wish to make via issue,
 email, or any other method with the owners of this repository before making a change. 
 
