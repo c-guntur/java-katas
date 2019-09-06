@@ -8,7 +8,7 @@ Thank you for your interest in contributing to this set of Code Katas !
 
 The Code Katas in this repository are arranged as independent maven projects that can be orchestrated or built together using the aggregator and **parent pom** pom.xml at the root of the project. The parent pom (located at the root of the project) defines a few properties used throughout (such as the *JUnit version* and the *Java compiler's source and target* version). In addition, some common build plugins are configured under the `pluginManagement` section of the parent pom.
 
-**REQUIREMENT**: The individual Kata projects should remain independent build targets and should not depend on any other module or kata for a successful build.
+#### REQUIREMENT: The individual Kata projects should remain independent build targets and should not depend on any other module or kata for a successful build.
 
 ### Kata structure
 
@@ -43,7 +43,7 @@ The project layout in the every Code Kata is similar. Here is a tree structure t
 | |       |____<kata pkg 2>    <------------------- Optional multiple packages if the kata covers more sections
 
 ```
-**REQUIREMENT**: The Code Kata project structure should comply with the setup of a `test` folder with failing tests and a `solution` folder with solved working tests.
+#### REQUIREMENT: The Code Kata project structure should comply with the setup of a `test` folder with failing tests and a `solution` folder with solved working tests.
 
 When contributing to this repository, please first discuss the change you wish to make via issue,
 email, or any other method with the owners of this repository before making a change. 
