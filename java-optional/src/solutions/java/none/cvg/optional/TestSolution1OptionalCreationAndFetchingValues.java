@@ -159,12 +159,12 @@ public class TestSolution1OptionalCreationAndFetchingValues {
          * DONE:
          *  Replace the "null" to get the Optional has a null value.
          *  Verify that the call throws a NoSuchElementException
-         *  Check API: java.util.Optional.isPresent()
+         *  Check API: java.util.Optional.orElseThrow()
          */
         assertThrows(NoSuchElementException.class, () -> {
 
             assertNotEquals(10,
-                    anotherOptionalInteger.get(),
+                    anotherOptionalInteger.orElseThrow(),
                     "This call should throw a NoSuchElementException");
         });
 
