@@ -156,14 +156,14 @@ public class TestKata1OptionalCreationAndFetchingValues {
 
         /*
          * TODO:
-         *  Replace the "11" to get the Optional has a null value.
+         *  Replace the "10" to get the Optional has a null value.
          *  Verify that the call throws a NoSuchElementException
          *  Check API: java.util.Optional.get()
          */
         assertThrows(NoSuchElementException.class, () -> {
 
             assertNotEquals(10,
-                    11,
+                    10,
                     "This call should throw a NoSuchElementException");
         });
 
