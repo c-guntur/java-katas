@@ -1,6 +1,6 @@
 dist: xenial
 language: java
-#jdk: openjdk11 # JDK 11 is default JDK on Travis' xenial image
+jdk: openjdk14 # JDK 11 is default JDK on Travis' xenial image
 
 install: true
 
