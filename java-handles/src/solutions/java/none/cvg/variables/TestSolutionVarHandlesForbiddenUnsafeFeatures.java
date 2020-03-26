@@ -33,7 +33,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class TestSolutionVarHandlesForbiddenUnsafeFeatures {
 
     @Test
-    @Tag("PASSING")
+    @Tag("ONLY_UNTIL_JDK_11")
     @Order(1)
     public void modifyPrivateFinalUsingReflection() {
 
@@ -107,7 +107,7 @@ public class TestSolutionVarHandlesForbiddenUnsafeFeatures {
     }
 
     @Test
-    @Tag("PASSING")
+    @Tag("ONLY_UNTIL_JDK_11")
     @Order(3)
     public void modifyConstantViaReflection() {
 
