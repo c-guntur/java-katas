@@ -18,6 +18,7 @@
         <module>java-datetime</module>
         <module>java-handles</module>
         <module>java-optional</module>
+        <module>java-lambdas</module>
     </modules>
 
     <properties>
