@@ -34,6 +34,7 @@ The general structure of each project is a maven quickstart project with a pom.x
 1. `java-handles`: This kata is for understanding Java Reflection and `sun.misc.Unsafe` usages and also to learn the alternates for those in Method Handles API and VarHandles API in more recent version of Java.
 1. `java-datetime`: This kata is for learning the Java Time API introduced in Java 8, that replaces the java.util.Date and java.util.Calendar with a more humane and extensible API.
 1. `java-optional`: This kata is for learning the Java Optional API, as a replacement for null-checks and unexpected `NullPointerException`s that crop up causing developer unhappiness and/or application instability issues.
+1. `java-lambdas`: This kata is for learning Java Lambdas, a feature that allows for closure-like syntax and the ability to replace anonymous classes with functional blocks.
 
 More katas will be added, feel free to contribute if you have ideas.
 
