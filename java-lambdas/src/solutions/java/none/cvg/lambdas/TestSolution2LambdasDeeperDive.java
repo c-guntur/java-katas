@@ -8,12 +8,13 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -116,15 +117,15 @@ public class TestSolution2LambdasDeeperDive {
         //  Replace the postions of o2 and o1 to pass the test as well
 
         // -----------------  Solution 1 -----------------
-//        Comparator nameSorter = (Comparator<Person>) (o1, o2) -> o1.getLastName().compareTo(o2.getLastName());
-//        List<Person> actualList = new ArrayList<>();
-//        actualList.addAll(persons);
-//        Collections.sort(actualList, nameSorter);
+        Comparator nameSorter = (Comparator<Person>) (o1, o2) -> o1.getLastName().compareTo(o2.getLastName());
+        List<Person> actualList = new ArrayList<>();
+        actualList.addAll(persons);
+        Collections.sort(actualList, nameSorter);
         // -----------------------------------------------
 
         // -----------------  Solution 2 -----------------
-        Comparator<Person> nameSorter = Comparator.comparing(Person::getLastName);
-        List<Person> actualList = persons.stream().sorted(nameSorter).collect(Collectors.toList());
+//        Comparator<Person> nameSorter = Comparator.comparing(Person::getLastName);
+//        List<Person> actualList = persons.stream().sorted(nameSorter).collect(Collectors.toList());
         // -----------------------------------------------
 
         assertEquals(expectedList, actualList, "The sorted lists should match");
