@@ -8,6 +8,10 @@ jobs:
       env:
         - DESC="OpenJDK - Java 14"
         - CMD="mvn verify"
+    - jdk: openjdk15
+      env:    
+        - DESC="OpenJDK - Java 15"   
+        - CMD="mvn verify"
     - jdk: openjdk-ea
       env:    
         - DESC="Latest OpenJDK-Early Access"   
