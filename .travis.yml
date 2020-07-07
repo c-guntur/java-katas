@@ -1,11 +1,22 @@
-dist: xenial
 language: java
-jdk: openjdk14 # JDK 11 is default JDK on Travis' xenial image
+dist: trusty
 
-install: true
+jobs:
+  fast_finish: true
+  include:
+    - jdk: openjdk14
+      env:
+        - DESC="OpenJDK - Java 14"
+        - CMD="mvn verify"
 
-script:
-- mvn verify
+  allow_failures:
+    - jdk: openjdk-ea
+      env:    
+        - DESC="Latest OpenJDK-Early Access"   
+        - CMD="mvn verify"
+
+
+script: eval travis_wait 30 $CMD  
 
 cache:
   directories:
