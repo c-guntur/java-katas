@@ -35,45 +35,45 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @DisplayNameGeneration(DateTimeKataDisplayNames.class)
 @DisplayName("Temporal Adjusters and Dates in Streams")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class TestSolution5StreamsInDateTime {
+public class TestKata6StreamsInDateTime {
 
     @Test
-    @Tag("PASSING")
+    @Tag("TODO")
     @Order(1)
     public void verifyFewTemporalAdjusters() {
 
         LocalDate tOJDate = LocalDate.of(1997, 8, 29);
 
 
-        // TODO: Fix the actual to render the "first day of the month".
+        // TODO: Fix the 'actual' param of the assert to render the "first day of the month".
         //  Check TemporalAdjusters for the right methods.
         //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         assertEquals("1997-08-01",
-                tOJDate.with(TemporalAdjusters.firstDayOfMonth()).toString(),
+                tOJDate.toString(),
                 "First Day Of The Month should be 1997-08-01, 28 days before the date");
 
 
-        // TODO: Fix the actual to render the "last day of the month".
+        // TODO: Fix the 'actual' param of the assert to render the "last day of the month".
         //  Check TemporalAdjusters for the right methods.
         //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         assertEquals(tOJDate.plusDays(2),
-                tOJDate.with(TemporalAdjusters.lastDayOfMonth()),
+                tOJDate,
                 "Last Day Of The Month should be 1997-08-31, 2 days after the date");
 
 
-        // TODO: Fix the actual to render the "first day of next month".
+        // TODO: Fix the 'actual' param of the assert to render the "first day of next month".
         //  Check TemporalAdjusters for the right methods.
         //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         assertEquals("1997-09-01",
-                tOJDate.with(TemporalAdjusters.firstDayOfNextMonth()).toString(),
+                tOJDate.toString(),
                 "First Day Of Next Month should be 1997-09-01, 3 days after the date");
 
 
-        // TODO: Fix the actual to render the "next Wednesday after the date".
+        // TODO: Fix the 'actual' param of the assert to render the "next Wednesday after the date".
         //  Check TemporalAdjusters for the right methods.
         //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         assertEquals(tOJDate.plusDays(5),
-                tOJDate.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY)),
+                tOJDate,
                 "Next Wednesday Month should be 1997-09-03, 5 days after the date");
 
 
@@ -85,20 +85,20 @@ public class TestSolution5StreamsInDateTime {
         //  Check TemporalAdjusters for the right methods.
         //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         assertEquals(nextYearDate.toString(),
-                tOJDate.with(TemporalAdjusters.firstDayOfNextYear()).toString(),
+                tOJDate.toString(),
                 "First Day Of Next Year should be 1998-01-01");
 
 
-        // TODO: Fix the actual to render the "first day of year".
+        // TODO: Fix the 'actual' param of the assert to render the "first day of year".
         //  Check TemporalAdjusters for the right methods.
         //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         assertEquals(nextYearDate.minusDays(365),
-                tOJDate.with(TemporalAdjusters.firstDayOfYear()),
+                tOJDate,
                 "First day of year should be 365 days less than first day of next year");
     }
 
     @Test
-    @Tag("PASSING")
+    @Tag("TODO")
     @Order(2)
     public void verifyStreamOperationsOnTemporalAdjustment() {
 
@@ -109,7 +109,7 @@ public class TestSolution5StreamsInDateTime {
             //  it is a or current date, if Sunday.
             //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
             //  Check: java.time.temporal.TemporalAdjusters.nextOrSame(DayOfWeek)
-            localDate = localDate.with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY));
+            // HINT: localDate = localDate.???(TemporalAdjusters.nextOrSame(???));
             return temporal.with(localDate);
         };
 
@@ -121,7 +121,7 @@ public class TestSolution5StreamsInDateTime {
         // TODO: Fix the list mapping below.
         //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         List<LocalDate> collectSundays = someDates
-                .map(each -> each.with(nextOrSameSunday))
+                .map(each -> each)
                 .collect(Collectors.toList());
 
         assertEquals("1997-08-31",
@@ -138,7 +138,7 @@ public class TestSolution5StreamsInDateTime {
     }
 
     @Test
-    @Tag("PASSING")
+    @Tag("TODO")
     @Order(3)
     public void twoBusinessDaysShippingCalculator() {
 
@@ -151,16 +151,7 @@ public class TestSolution5StreamsInDateTime {
         //        enum for simplicity.
         TemporalAdjuster tPlusTwoBusinessDates = temporal -> {
             LocalDate localDate = LocalDate.from(temporal);
-            int dayOfWeekValue = localDate.getDayOfWeek().getValue();
-            if (dayOfWeekValue < 4) {
-                localDate = localDate.plusDays(2);
-            } else {
-                if (dayOfWeekValue == 4) {
-                    localDate = localDate.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
-                } else {
-                    localDate = localDate.with(TemporalAdjusters.next(DayOfWeek.TUESDAY));
-                }
-            }
+            localDate = localDate.plusDays(2);
             return temporal.with(localDate);
         };
 

@@ -36,16 +36,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @DisplayNameGeneration(DateTimeKataDisplayNames.class)
 @DisplayName("Date and Time partials such as credit card expiration")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class TestSolution4DateTimePartials {
+public class TestSolution5DateTimePartials {
 
     private Clock terminatorOriginalJudgementDay = null;
 
     @BeforeEach
     public void setup() {
 
-        Instant instant = Instant.parse("1997-08-29T07:14:30Z");
+        Instant instant = Instant.parse("1997-08-29T06:14:30Z");
         // We make an assumption for GMT - 5 as the standard time for users of this test.
-        terminatorOriginalJudgementDay = Clock.fixed(instant, ZoneId.of("GMT-5"));
+        terminatorOriginalJudgementDay = Clock.fixed(instant, ZoneId.of("GMT-4"));
     }
 
     @Test
