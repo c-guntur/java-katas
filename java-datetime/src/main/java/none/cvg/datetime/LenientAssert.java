@@ -4,16 +4,16 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 public class LenientAssert {
 
-    public static final String FIX_WITH_RIGHT_CALL = "Replace this string with a valid call";
+    public static final String NOT_EQUAL = "The two values are not equal within the tolerance";
 
     public static void assertAlmostEquals(long first, String second, long tolerance) {
 
-        assertAlmostEquals(first, second, tolerance, null);
+        assertAlmostEquals(first, second, tolerance, NOT_EQUAL);
     }
 
     public static void assertAlmostEquals(long first, long second, long tolerance) {
 
-        assertAlmostEquals(first, second, tolerance, null);
+        assertAlmostEquals(first, second, tolerance, NOT_EQUAL);
     }
 
     public static void assertAlmostEquals(long first, long second, long tolerance, String message) {
@@ -25,7 +25,7 @@ public class LenientAssert {
 
     public static void assertAlmostEquals(long first, String second, long tolerance, String message) {
 
-            fail(format(message, first, second));
+        fail(format(message, first, second));
     }
 
     private static String format(String message, Object expected, Object actual) {

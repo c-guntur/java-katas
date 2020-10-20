@@ -85,12 +85,6 @@ public class TestSolution3LocalAndZonedDateTimes {
     @Order(2)
     public void verifyLocalDateUsingMonthEnums() {
 
-        // *****************************************************
-        // A tribute to 2001: A Space Odyssey.
-        // HAL, the sentient computer,
-        // was 'born' on January 12th 1999
-        // *****************************************************
-
         // DONE: Replace the LocalDate.now() below to create a LocalDate of 1999-01-12.
         //  Fix LocalDate below to HAL's birthday. Use Month enums.
         //  No longer a confusion about whether January is 0 or 1.
@@ -163,11 +157,9 @@ public class TestSolution3LocalAndZonedDateTimes {
     @Order(5)
     public void verifyLocalTimeInUtcUsingClock() {
 
-        // DONE: Replace the LocalTime.now() call below to display 2:14AM UTC
+        // DONE: Replace the LocalTime.now() call below to display 2:14AM
         //  Fix time below to refer to when the Original Judgement Day was triggered.
-        //  This test does not include timezones, so all times will be UTC in this test.
-        //  There is another test below that will show how this time can be displayed in
-        //  Eastern Time (Washington DC / New York City).
+        //  This test does not include timezones, so all times will be GMT -4 in this test.
         //  Check: java.time.LocalTime.now(java.time.Clock)
         LocalTime theOriginalJudgementDayTime = LocalTime.now(terminatorOriginalJudgementDay);
 
@@ -189,7 +181,7 @@ public class TestSolution3LocalAndZonedDateTimes {
         //  Fix LocalDateTime to a date of 2005-05-05 and a time on 05:05:05 AM.
         //  Check: java.time.LocalDateTime.of(int, int, int, int, int, int)
         LocalDateTime allDateTimeOhFives =
-                LocalDateTime.of(5, 5, 5, 5, 5, 5);
+                LocalDateTime.of(2005, 5, 5, 5, 5, 5);
 
         assertTrue(allDateTimeOhFives.getMonthValue() == 5,
                 "The month should be May (5th Month)");
@@ -232,7 +224,7 @@ public class TestSolution3LocalAndZonedDateTimes {
     public void verifyZonedDateTimeUsingIntegers() {
 
         ZonedDateTime allDateTimeOhFives =
-                ZonedDateTime.of(5,
+                ZonedDateTime.of(2005,
                         5,
                         5,
                         5,
@@ -305,7 +297,7 @@ public class TestSolution3LocalAndZonedDateTimes {
     public void verifyConversionOfUTCDateTimeToIndianStandardTime() {
 
         ZonedDateTime allDateTimeOhFives =
-                ZonedDateTime.of(5,
+                ZonedDateTime.of(2005,
                         5,
                         5,
                         5,

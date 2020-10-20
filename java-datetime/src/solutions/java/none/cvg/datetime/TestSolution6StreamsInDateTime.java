@@ -45,32 +45,32 @@ public class TestSolution6StreamsInDateTime {
         LocalDate tOJDate = LocalDate.of(1997, 8, 29);
 
 
-        // TODO: Fix the actual to render the "first day of the month".
-        //  Check TemporalAdjusters for the right methods.
+        // DONE: Fix the actual to render the "first day of the month".
+        //  Check: java.time.temporal.TemporalAdjusters for the right methods.
         //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         assertEquals("1997-08-01",
                 tOJDate.with(TemporalAdjusters.firstDayOfMonth()).toString(),
                 "First Day Of The Month should be 1997-08-01, 28 days before the date");
 
 
-        // TODO: Fix the actual to render the "last day of the month".
-        //  Check TemporalAdjusters for the right methods.
+        // DONE: Fix the actual to render the "last day of the month".
+        //  Check: java.time.temporal.TemporalAdjusters for the right methods.
         //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         assertEquals(tOJDate.plusDays(2),
                 tOJDate.with(TemporalAdjusters.lastDayOfMonth()),
                 "Last Day Of The Month should be 1997-08-31, 2 days after the date");
 
 
-        // TODO: Fix the actual to render the "first day of next month".
-        //  Check TemporalAdjusters for the right methods.
+        // DONE: Fix the actual to render the "first day of next month".
+        //  Check: java.time.temporal.TemporalAdjusters for the right methods.
         //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         assertEquals("1997-09-01",
                 tOJDate.with(TemporalAdjusters.firstDayOfNextMonth()).toString(),
                 "First Day Of Next Month should be 1997-09-01, 3 days after the date");
 
 
-        // TODO: Fix the actual to render the "next Wednesday after the date".
-        //  Check TemporalAdjusters for the right methods.
+        // DONE: Fix the actual to render the "next Wednesday after the date".
+        //  Check: java.time.temporal.TemporalAdjusters for the right methods.
         //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         assertEquals(tOJDate.plusDays(5),
                 tOJDate.with(TemporalAdjusters.next(DayOfWeek.WEDNESDAY)),
@@ -81,16 +81,16 @@ public class TestSolution6StreamsInDateTime {
         // The first day of the next year after the Original Judgement day.
         LocalDate nextYearDate = LocalDate.of(1998, 1, 1);
 
-        // TODO: Fix the actual to render the "first day of next year".
-        //  Check TemporalAdjusters for the right methods.
+        // DONE: Fix the actual to render the "first day of next year".
+        //  Check: java.time.temporal.TemporalAdjusters for the right methods.
         //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         assertEquals(nextYearDate.toString(),
                 tOJDate.with(TemporalAdjusters.firstDayOfNextYear()).toString(),
                 "First Day Of Next Year should be 1998-01-01");
 
 
-        // TODO: Fix the actual to render the "first day of year".
-        //  Check TemporalAdjusters for the right methods.
+        // DONE: Fix the actual to render the "first day of year".
+        //  Check: java.time.temporal.TemporalAdjusters for the right methods.
         //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         assertEquals(nextYearDate.minusDays(365),
                 tOJDate.with(TemporalAdjusters.firstDayOfYear()),
@@ -104,7 +104,7 @@ public class TestSolution6StreamsInDateTime {
 
         TemporalAdjuster nextOrSameSunday = temporal -> {
             LocalDate localDate = LocalDate.from(temporal);
-            // TODO: Add a localDate manipulation that returns
+            // DONE: Add a localDate manipulation that returns
             //  either the next sunday after current date
             //  it is a or current date, if Sunday.
             //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
@@ -118,7 +118,7 @@ public class TestSolution6StreamsInDateTime {
                 LocalDate.of(2015, 1, 1),
                 LocalDate.of(2015, 1, 4));
 
-        // TODO: Fix the list mapping below.
+        // DONE: Fix the list mapping below.
         //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         List<LocalDate> collectSundays = someDates
                 .map(each -> each.with(nextOrSameSunday))
@@ -142,7 +142,7 @@ public class TestSolution6StreamsInDateTime {
     @Order(3)
     public void twoBusinessDaysShippingCalculator() {
 
-        // TODO: Fix the TemporalAdjuster below.
+        // DONE: Fix the TemporalAdjuster below.
         //  Orders placed on Monday, Tuesday and Wednesday ship 2 business days later.
         //  Orders placed on Thursday ship on the next Monday.
         //  Orders places on Friday, Saturday and Sunday ship on the next Tuesday.

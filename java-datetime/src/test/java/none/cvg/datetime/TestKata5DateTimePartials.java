@@ -44,7 +44,7 @@ public class TestKata5DateTimePartials {
     public void setup() {
 
         Instant instant = Instant.parse("1997-08-29T06:14:30Z");
-        // We make an assumption for GMT - 5 as the standard time for users of this test.
+        // We make an assumption for GMT -4 as the timezone for users of this test.
         terminatorOriginalJudgementDay = Clock.fixed(instant, ZoneId.of("GMT-4"));
     }
 
@@ -57,7 +57,7 @@ public class TestKata5DateTimePartials {
 
         // TODO: Replace the "null" below get a Month instance.
         //  Check: java.time.LocalDateTime.getMonth()
-        Month tOJMonth = null;
+        Month tOJMonth = tOJDateTime.getMonth();
 
         assertEquals(Month.AUGUST,
                 tOJMonth,
@@ -71,9 +71,9 @@ public class TestKata5DateTimePartials {
 
         // Real world: Birthday or anniversary
 
-        // TODO: Replace the MonthDay.now() below get a MonthDay anniversary for the Judegement Day.
+        // TODO: Replace the MonthDay.now() below get a MonthDay anniversary for the Judgement Day.
         //  Check: java.time.MonthDay.now(java.time.Clock)
-        MonthDay anniversaryofJudgementDay = MonthDay.now();
+        MonthDay anniversaryofJudgementDay = MonthDay.now(terminatorOriginalJudgementDay);
 
         assertEquals(Month.AUGUST,
                 anniversaryofJudgementDay.getMonth(),
@@ -95,9 +95,9 @@ public class TestKata5DateTimePartials {
 
         // Real world: Age or Year of occurrence.
 
-        // TODO: Replace the Year.now() below get a Year for the Judegement Day.
+        // TODO: Replace the Year.now() below get a Year for the Judgement Day.
         //  Check: java.time.Year.now(java.time.Clock)
-        Year yearOfJudgementDay = Year.now();
+        Year yearOfJudgementDay = Year.now(terminatorOriginalJudgementDay);
 
         assertEquals(1997,
                 yearOfJudgementDay.getValue(),
@@ -111,7 +111,7 @@ public class TestKata5DateTimePartials {
 
         // Real world: CreditCard or Medicine expiration.
 
-        // TODO: Replace the YearMonth.now() below get a YearMonth for the Judegement Day.
+        // TODO: Replace the YearMonth.now() below get a YearMonth for the Judgement Day.
         //  Check: java.time.YearMonth.now(java.time.Clock)
         YearMonth yearMonthOfJudgementDay = YearMonth.now();
 

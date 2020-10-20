@@ -32,7 +32,7 @@ import static org.junit.jupiter.api.Assertions.fail;
  * @see ChronoUnit
  */
 @DisplayNameGeneration(DateTimeKataDisplayNames.class)
-@DisplayName("Periods (days, months years) and Durations (hours minutes, seconds")
+@DisplayName("Periods (days, months, years) and Durations (hours, minutes, seconds)")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestSolution4PeriodsAndDurations {
 
@@ -42,7 +42,7 @@ public class TestSolution4PeriodsAndDurations {
     public void setup() {
 
         Instant instant = Instant.parse("1997-08-29T06:14:30Z");
-        // We make an assumption for GMT - 5 as the standard time for users of this test.
+        // We make an assumption for GMT -4 as the timezone for users of this test.
         terminatorOriginalJudgementDay = Clock.fixed(instant, ZoneId.of("GMT-4"));
     }
 
@@ -52,7 +52,7 @@ public class TestSolution4PeriodsAndDurations {
     public void verifyPeriodCreatedUsingIntegers() {
 
         // Create a Period instance
-        // TODO: Replace the Period.ZERO to a time period of 20 years and 10 days.
+        // DONE: Replace the Period.ZERO to a time period of 20 years and 10 days.
         //  Check : java.time.Period.of(int, int, int)
         Period twentyYearsAndTenDays = Period.of(20, 0, 10);
 
@@ -68,7 +68,7 @@ public class TestSolution4PeriodsAndDurations {
         // Add the Period to a LocalDateTime
         LocalDateTime tOJDateTime = LocalDateTime.now(terminatorOriginalJudgementDay);
 
-        // TODO: Call a method on tOJDateTime to add the newly created Period
+        // DONE: Call a method on tOJDateTime to add the newly created Period
         //  Check : java.time.LocalDateTime.plus(java.time.temporal.TemporalAmount)
         LocalDateTime calculatedTwentyYearsAndTenDaysLater =
                 tOJDateTime.plus(twentyYearsAndTenDays);
@@ -92,7 +92,7 @@ public class TestSolution4PeriodsAndDurations {
     public void verifyPeriodCreatedUsingFluentMethods() {
 
         // Create a Period instance
-        // TODO: Replace the Period.ZERO to a time period of 20 years and 10 days.
+        // DONE: Replace the Period.ZERO to a time period of 20 years and 10 days.
         //  Check : java.time.Period.ofYears(int).withDays(int)
         Period twentyYearsAndTenDays = Period.ofYears(20).withDays(10);
 
@@ -108,7 +108,7 @@ public class TestSolution4PeriodsAndDurations {
         // Add the Period to a LocalDateTime
         LocalDateTime tOJDateTime = LocalDateTime.now(terminatorOriginalJudgementDay);
 
-        // TODO: Call a method on tOJDateTime to add the newly created Period
+        // DONE: Call a method on tOJDateTime to add the newly created Period
         //  Check : java.time.LocalDateTime.plus(java.time.temporal.TemporalAmount)
         LocalDateTime calculatedTwentyYearsAndTenDaysLater =
                 tOJDateTime.plus(twentyYearsAndTenDays);
@@ -133,7 +133,7 @@ public class TestSolution4PeriodsAndDurations {
     public void verifyDurationCreatedUsingIntegersAndChronoUnits() {
 
         // Create a Duration instance
-        // TODO: Replace the Duration.ZERO to a duration of 3 hours and 6 seconds.
+        // DONE: Replace the Duration.ZERO to a duration of 3 hours and 6 seconds (10806 seconds)
         //  Check: java.time.Duration.of(int, ChronoUnit)
         Duration threeHoursAndSixSeconds = Duration.of(10806, ChronoUnit.SECONDS);
 
@@ -149,7 +149,7 @@ public class TestSolution4PeriodsAndDurations {
         // Add the Duration to a LocalDateTime
         LocalDateTime tOJDateTime = LocalDateTime.now(terminatorOriginalJudgementDay);
 
-        // TODO: Call a method on tOJDateTime to add the newly created Duration
+        // DONE: Call a method on tOJDateTime to add the newly created Duration
         //  Check : java.time.LocalDateTime.plus(java.time.temporal.TemporalAmount)
         LocalDateTime calculatedThreeHoursAndSixSecondsLater =
                 tOJDateTime.plus(threeHoursAndSixSeconds);
@@ -174,7 +174,7 @@ public class TestSolution4PeriodsAndDurations {
     public void verifyDurationCreatedUsingFluentMethods() {
 
         // Create a Duration instance
-        // TODO: Replace the Duration.ZERO to a duration of 3 hours and 6 seconds.
+        // DONE: Replace the Duration.ZERO to a duration of 3 hours and 6 seconds.
         //  NOTE: Check the difference between plusSeconds and withSeconds
         //  Check: java.time.Duration.ofHours(int).plusSeconds(int))
         Duration threeHoursAndSixSeconds = Duration.ofHours(3).plusSeconds(6);
@@ -192,7 +192,7 @@ public class TestSolution4PeriodsAndDurations {
         // Add the Duration to a LocalDateTime
         LocalDateTime tOJDateTime = LocalDateTime.now(terminatorOriginalJudgementDay);
 
-        // TODO: Call a method on tOJDateTime to add the newly created Duration
+        // DONE: Call a method on tOJDateTime to add the newly created Duration
         //  Check : java.time.LocalDateTime.plus(java.time.temporal.TemporalAmount)
         LocalDateTime calculatedThreeHoursAndSixSecondsLater =
                 tOJDateTime.plus(threeHoursAndSixSeconds);

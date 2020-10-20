@@ -44,7 +44,7 @@ public class TestSolution5DateTimePartials {
     public void setup() {
 
         Instant instant = Instant.parse("1997-08-29T06:14:30Z");
-        // We make an assumption for GMT - 5 as the standard time for users of this test.
+        // We make an assumption for GMT -4 as the timezone for users of this test.
         terminatorOriginalJudgementDay = Clock.fixed(instant, ZoneId.of("GMT-4"));
     }
 
@@ -55,7 +55,7 @@ public class TestSolution5DateTimePartials {
 
         LocalDateTime tOJDateTime = LocalDateTime.now(terminatorOriginalJudgementDay);
 
-        // TODO: Replace the "null" below get a Month instance.
+        // DONE: Replace the "null" below get a Month instance.
         //  Check: java.time.LocalDateTime.getMonth()
         Month tOJMonth = tOJDateTime.getMonth();
 
@@ -71,7 +71,7 @@ public class TestSolution5DateTimePartials {
 
         // Real world: Birthday or anniversary
 
-        // TODO: Replace the MonthDay.now() below get a MonthDay anniversary for the Judegement Day.
+        // DONE: Replace the MonthDay.now() below get a MonthDay anniversary for the Judgement Day.
         //  Check: java.time.MonthDay.now(java.time.Clock)
         MonthDay anniversaryofJudgementDay = MonthDay.now(terminatorOriginalJudgementDay);
 
@@ -95,7 +95,7 @@ public class TestSolution5DateTimePartials {
 
         // Real world: Age or Year of occurrence.
 
-        // TODO: Replace the Year.now() below get a Year for the Judegement Day.
+        // DONE: Replace the Year.now() below get a Year for the Judgement Day.
         //  Check: java.time.Year.now(java.time.Clock)
         Year yearOfJudgementDay = Year.now(terminatorOriginalJudgementDay);
 
@@ -111,7 +111,7 @@ public class TestSolution5DateTimePartials {
 
         // Real world: CreditCard or Medicine expiration.
 
-        // TODO: Replace the YearMonth.now() below get a YearMonth for the Judegement Day.
+        // DONE: Replace the YearMonth.now() below get a YearMonth for the Judgement Day.
         //  Check: java.time.YearMonth.now(java.time.Clock)
         YearMonth yearMonthOfJudgementDay = YearMonth.now(terminatorOriginalJudgementDay);
 
@@ -135,7 +135,7 @@ public class TestSolution5DateTimePartials {
 
         LocalDateTime tOJDateTime = LocalDateTime.now(terminatorOriginalJudgementDay);
 
-        // TODO: Replace the null below to get the Day Of Week from the tOJDateTime.
+        // DONE: Replace the null below to get the Day Of Week from the tOJDateTime.
         //  Check: java.time.LocalDateTime.getDayOfWeek()
         DayOfWeek dayOfWeek = tOJDateTime.getDayOfWeek();
 

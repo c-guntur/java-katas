@@ -19,6 +19,7 @@ import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.temporal.ChronoField;
 
+import static none.cvg.datetime.LenientAssert.assertAlmostEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -62,7 +63,10 @@ public class TestSolution2Clocks {
         // Since the times are created sequentially, it may be possible that a second may
         // have elapsed/ticked since the first date was generated. Hence we check for the
         // difference being a second or less.
-        assertTrue(Math.abs(secondsWithClock - secondsWithoutClock) <= 1);
+        assertAlmostEquals(secondsWithClock,
+                secondsWithoutClock,
+                1,
+                "The values should almost be equal");
     }
 
     @Test
@@ -73,6 +77,12 @@ public class TestSolution2Clocks {
         // Get current ZoneOffset
         OffsetDateTime offsetDateTime = OffsetDateTime.now();
         ZoneOffset offset = offsetDateTime.getOffset();
+
+        // *****************************************************
+        // A tribute to 2001: A Space Odyssey.
+        // HAL, the sentient computer,
+        // was 'born' on January 12th 1999
+        // *****************************************************
 
         Instant utcHALBirthday = Instant.parse("1999-01-12T00:00:00.001-08:00");
 

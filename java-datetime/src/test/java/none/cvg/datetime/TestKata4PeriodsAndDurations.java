@@ -32,7 +32,7 @@ import static org.junit.jupiter.api.Assertions.fail;
  * @see ChronoUnit
  */
 @DisplayNameGeneration(DateTimeKataDisplayNames.class)
-@DisplayName("Periods (days, months years) and Durations (hours minutes, seconds")
+@DisplayName("Periods (days, months, years) and Durations (hours, minutes, seconds)")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestKata4PeriodsAndDurations {
 
@@ -42,7 +42,7 @@ public class TestKata4PeriodsAndDurations {
     public void setup() {
 
         Instant instant = Instant.parse("1997-08-29T06:14:30Z");
-        // We make an assumption for GMT - 5 as the standard time for users of this test.
+        // We make an assumption for GMT -4 as the timezone for users of this test.
         terminatorOriginalJudgementDay = Clock.fixed(instant, ZoneId.of("GMT-4"));
     }
 
@@ -133,7 +133,7 @@ public class TestKata4PeriodsAndDurations {
     public void verifyDurationCreatedUsingIntegersAndChronoUnits() {
 
         // Create a Duration instance
-        // TODO: Replace the Duration.ZERO to a duration of 3 hours and 6 seconds.
+        // TODO: Replace the Duration.ZERO to a duration of 3 hours and 6 seconds (10806 seconds)
         //  Check: java.time.Duration.of(int, ChronoUnit)
         Duration threeHoursAndSixSeconds = Duration.ZERO;
 

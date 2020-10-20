@@ -46,7 +46,7 @@ public class TestKata6StreamsInDateTime {
 
 
         // TODO: Fix the 'actual' param of the assert to render the "first day of the month".
-        //  Check TemporalAdjusters for the right methods.
+        //  Check: java.time.temporal.TemporalAdjusters for the right methods.
         //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         assertEquals("1997-08-01",
                 tOJDate.toString(),
@@ -54,7 +54,7 @@ public class TestKata6StreamsInDateTime {
 
 
         // TODO: Fix the 'actual' param of the assert to render the "last day of the month".
-        //  Check TemporalAdjusters for the right methods.
+        //  Check: java.time.temporal.TemporalAdjusters for the right methods.
         //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         assertEquals(tOJDate.plusDays(2),
                 tOJDate,
@@ -62,7 +62,7 @@ public class TestKata6StreamsInDateTime {
 
 
         // TODO: Fix the 'actual' param of the assert to render the "first day of next month".
-        //  Check TemporalAdjusters for the right methods.
+        //  Check: java.time.temporal.TemporalAdjusters for the right methods.
         //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         assertEquals("1997-09-01",
                 tOJDate.toString(),
@@ -70,7 +70,7 @@ public class TestKata6StreamsInDateTime {
 
 
         // TODO: Fix the 'actual' param of the assert to render the "next Wednesday after the date".
-        //  Check TemporalAdjusters for the right methods.
+        //  Check: java.time.temporal.TemporalAdjusters for the right methods.
         //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         assertEquals(tOJDate.plusDays(5),
                 tOJDate,
@@ -82,7 +82,7 @@ public class TestKata6StreamsInDateTime {
         LocalDate nextYearDate = LocalDate.of(1998, 1, 1);
 
         // TODO: Fix the actual to render the "first day of next year".
-        //  Check TemporalAdjusters for the right methods.
+        //  Check: java.time.temporal.TemporalAdjusters for the right methods.
         //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         assertEquals(nextYearDate.toString(),
                 tOJDate.toString(),
@@ -90,7 +90,7 @@ public class TestKata6StreamsInDateTime {
 
 
         // TODO: Fix the 'actual' param of the assert to render the "first day of year".
-        //  Check TemporalAdjusters for the right methods.
+        //  Check: java.time.temporal.TemporalAdjusters for the right methods.
         //  Check: java.time.LocalDate.with(java.time.temporal.TemporalAdjuster)
         assertEquals(nextYearDate.minusDays(365),
                 tOJDate,
@@ -151,6 +151,15 @@ public class TestKata6StreamsInDateTime {
         //        enum for simplicity.
         TemporalAdjuster tPlusTwoBusinessDates = temporal -> {
             LocalDate localDate = LocalDate.from(temporal);
+            // -----------------------------------------------
+            // Hint to fix this code:
+            // Change the logic to use business days
+            // using TemporalAdjusters and localDate.with
+            // Condition based on day of week being Thursday
+            // and Friday/Saturday or Sunday
+            // Remember that localdate is immutable.
+
+            // -----------------------------------------------
             localDate = localDate.plusDays(2);
             return temporal.with(localDate);
         };
