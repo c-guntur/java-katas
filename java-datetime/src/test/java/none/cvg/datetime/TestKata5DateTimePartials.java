@@ -57,7 +57,7 @@ public class TestKata5DateTimePartials {
 
         // TODO: Replace the "null" below get a Month instance.
         //  Check: java.time.LocalDateTime.getMonth()
-        Month tOJMonth = tOJDateTime.getMonth();
+        Month tOJMonth = null;
 
         assertEquals(Month.AUGUST,
                 tOJMonth,
@@ -73,7 +73,7 @@ public class TestKata5DateTimePartials {
 
         // TODO: Replace the MonthDay.now() below get a MonthDay anniversary for the Judgement Day.
         //  Check: java.time.MonthDay.now(java.time.Clock)
-        MonthDay anniversaryofJudgementDay = MonthDay.now(terminatorOriginalJudgementDay);
+        MonthDay anniversaryofJudgementDay = MonthDay.now();
 
         assertEquals(Month.AUGUST,
                 anniversaryofJudgementDay.getMonth(),
@@ -97,7 +97,7 @@ public class TestKata5DateTimePartials {
 
         // TODO: Replace the Year.now() below get a Year for the Judgement Day.
         //  Check: java.time.Year.now(java.time.Clock)
-        Year yearOfJudgementDay = Year.now(terminatorOriginalJudgementDay);
+        Year yearOfJudgementDay = Year.now();
 
         assertEquals(1997,
                 yearOfJudgementDay.getValue(),
