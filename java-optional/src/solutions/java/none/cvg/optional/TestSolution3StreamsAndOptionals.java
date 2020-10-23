@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /*
- * DONE:
  *  These tests show how Optionals can be used in stream APIs
  *  The first test demonstrates a simple usage of Optional using isPresent() and get()
  *  while the second test shows the newer API flatMap() that returns Optionals if they exist
@@ -111,7 +110,7 @@ public class TestSolution3StreamsAndOptionals {
     public void java8Example() {
 
         /*
-         * TODO:
+         * DONE:
          *  Replace the code below to use stream() API:
          *  1. stream() the namesSet
          *  2.   map() to get an Optional<NameValuePair> using this::findOptionalNameValuePair(?)
@@ -146,7 +145,7 @@ public class TestSolution3StreamsAndOptionals {
     @Order(2)
     public void java9Example() {
         /*
-         * TODO:
+         * DONE:
          *  Replace the code below to use stream() API:
          *  1. stream() the namesSet
          *  2.   map() to get an Optional<NameValuePair> using this::findOptionalNameValuePair(?)
