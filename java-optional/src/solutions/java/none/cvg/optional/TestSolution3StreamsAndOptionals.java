@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /*
+ * DONE:
  *  These tests show how Optionals can be used in stream APIs
  *  The first test demonstrates a simple usage of Optional using isPresent() and get()
  *  while the second test shows the newer API flatMap() that returns Optionals if they exist

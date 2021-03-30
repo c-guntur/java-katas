@@ -55,9 +55,9 @@ public class TestKata5DateTimePartials {
 
         LocalDateTime tOJDateTime = LocalDateTime.now(terminatorOriginalJudgementDay);
 
-        // TODO: Replace the "null" below get a Month instance.
+        // TODO: Replace the "Month.JANUARY" below get a Month instance.
         //  Check: java.time.LocalDateTime.getMonth()
-        Month tOJMonth = null;
+        Month tOJMonth = Month.JANUARY;
 
         assertEquals(Month.AUGUST,
                 tOJMonth,
