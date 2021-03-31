@@ -1,0 +1,108 @@
+= Java Lambdas - A Code kata
+:toc:
+:toclevels: 4
+
+image:assets/images/DukeLambda.png[Java Duke Lambda Logo]
+
+Java lambdas are anonymous functions that make code much moe concise and simpler.
+
+== What is a Code-Kata
+
+A code-kata is a coding exercise that builds muscle memory by a practice of programming to arrive
+at a known solution.
+
+=== How does one go about with this code kata?
+
+The essence of the exercise (presentation material and code kata) is to demonstrate the
+usage patterns for the java API or functionality.
+
+This set of code katas rely on fixing broken tests. The tests may have multiple solutions, the
+intent is to learn and experiment.
+
+The project contains several JUnit tests that fail.
+
+==== Simple steps to use this kata
+
+. Run the test class(es).
+. One or more tests will fail with the test failure message.
+. Fix the failing tests by using `HINT` and `TODO` comments.
+. Repeat above steps until all tests pass.
+. Check the solutions to see if there are other ways to solve.
+(Remember, the solution may be less performant/optimal than yours)
+. Rinse and repeat (delete and checkout again, then back to Step 1) to build muscle memory.
+
+=== Mission
+> Your mission, should you choose to accept it, will be to fix the JUnit tests. This
+message will self-destruct in `**NaN**` minutes.
+
+== Requirements
+How to prepare for coding along
+
+This kata is developed as a Java maven project.Ensure that you have:
+
+. Apache Maven 3.6.x or above. _Tested with Apache Maven 3.6.3_.
+Link: https://maven.apache.org/download.cgi
+
+. JDK 11 or above. _Tested with OpenJDK 11_
+Link: http://jdk.java.net/11/
+
+. Your favorite Java IDE. _IntelliJ IDEA Ultimate was used to develop this kata_.
+
+== Project Structure
+
+The structure of the project:
+
+[source]
+----
+|____pom.xml
+|____README.md
+|
+|____src
+| |
+| |____test                    <------------------- Kata Tests
+| | |____java
+| |   |____none
+| |     |____cvg
+| |       |____lambdas
+| |
+| |____main                    <------------------- Shared ErrorMessages & DemoClass
+| | |____java
+| |   |____none
+| |     |____cvg
+| |       |____lambdas
+| |
+| |____solutions               <------------------- Solutions
+| | |____java
+| |   |____none
+| |     |____cvg
+| |       |____lambdas
+----
+
+== Tests Included
+
+=== Java Lambda
+
+The JUnit tests listed below are setup to teach/learn the Java Lambda features.
+
+link:src/test/java/none/cvg/lambdas/TestKata1LambdaBasics.java[TestKata1LambdaBasics.java]:: show the basic features of lambdas in Java.
+
+link:src/test/java/none/cvg/lambdas/TestKata2LambdasDeeperDive.java[TestKata2LambdasDeeperDive.java]:: explore deeper into Java Lambda usages.
+
+
+== Solutions
+
+.Solutions for each test:
+
+|===
+| Kata Test | Solution
+
+|link:src/test/java/none/cvg/lambdas/TestKata1LambdaBasics.java[TestKata1LambdaBasics.java]
+|link:src/solutions/java/none/cvg/lambdas/TestSolution1LambdaBasics.java[TestSolution1LambdaBasics.java]
+
+|link:src/test/java/none/cvg/lambdas/TestKata2LambdasDeeperDive.java[TestKata2LambdasDeeperDive.java]
+|link:src/solutions/java/none/cvg/lambdas/TestSolution2LambdasDeeperDive.java[TestSolution2LambdasDeeperDive.java]
+|===
+
+== Take Away
+
+The key take-away from this kata is a solid understanding of the Java Lambdas.

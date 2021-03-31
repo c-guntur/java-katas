@@ -1,9 +1,8 @@
 = java-futures
 :toc:
 :toclevels: 4
-== Java CompletableFuture API - A Code kata
 
-image:assets/images/DukeCompletableFuture.png[Duke with Back to the Future Car]
+image:assets/images/DukeCompletableFuture.png[Duke with Back to the Future Car, 480, 321]
 
 `java.util.concurrent.CompletableFuture` is a versatile utility in Java (since Java 8).It provides a means of task execution, both synchronous and asynchronous.
 
@@ -45,8 +44,8 @@ The project contains several JUnit tests that fail.
 . Rinse and repeat (delete and checkout again, then back to Step 1) to build muscle memory.
 
 === Mission
-> ***Your mission**, should you choose to accept it, will be to fix the JUnit tests. This
-message will self-destruct in* **NaN** *minutes*
+> Your mission, should you choose to accept it, will be to fix the JUnit tests. This
+message will self-destruct in `**NaN**` minutes.
 
 == Requirements
 How to prepare for coding along

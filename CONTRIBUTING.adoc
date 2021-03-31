@@ -1,23 +1,26 @@
-# Contributing
+= Contributing
 
 Thank you for your interest in contributing to this set of Code Katas !
 
-## Contribution Guide
+== Contribution Guide
 
-### Build policy
+=== Build policy
 
-The Code Katas in this repository are arranged as independent maven projects that can be orchestrated or built together using the aggregator and **parent pom** pom.xml at the root of the project. The parent pom (located at the root of the project) defines a few properties used throughout (such as the *JUnit version* and the *Java compiler's source and target* version). In addition, some common build plugins are configured under the `pluginManagement` section of the parent pom.
+The Code Katas in this repository are arranged as independent maven projects that can be orchestrated or built together using the aggregator and **parent pom** pom.xml at the root of the project. The parent pom (located at the root of the project) defines a few properties used throughout (such as the *JUnit version*, and the *Java compiler's source and target* version). In addition, some common build plugins are configured under the `pluginManagement` section of the parent pom.
 
-#### REQUIREMENT: The individual Kata projects should remain independent build targets and should not depend on any other module or kata for a successful build.
+==== REQUIREMENT
+The individual Kata projects should remain independent build targets and should not depend on any other module or kata for a successful build.
 
-### Kata structure
+=== Kata structure
 
 Irrespective of the contribution style (a full module or enhancement/bug fix to existing module), here are some requirements:
 
-#### General Project Structure
+==== General Project Structure
 
-The project layout in the every Code Kata is similar. Here is a tree structure to explain:
-```
+The project layout in the every Code Kata is similar.Here is a tree structure to explain:
+
+[source]
+----
 |____pom.xml                   <------------------- Project pom, using the java-katas/pom.xml as parent
 |____README.md                 <------------------- Well documented README, with links to tests & solutions
 |
@@ -35,29 +38,30 @@ The project layout in the every Code Kata is similar. Here is a tree structure t
 | |   |____none
 | |     |____cvg
 | |
-| |____solutions               <------------------- Solutions 
+| |____solutions               <------------------- Solutions
 | | |____java
 | |   |____none
 | |     |____cvg
 | |       |____<kata package>  <------------------- Name the package that corresponds to the kata.
 | |       |____<kata pkg 2>    <------------------- Optional multiple packages if the kata covers more sections
 
-```
-#### REQUIREMENT: The Code Kata project structure should comply with the setup of a `test` folder with failing tests and a `solution` folder with solved working tests.
+----
+==== REQUIREMENT
+The Code Kata project structure should comply with the setup of a `test` folder with failing tests, and a `solution` folder with solved working tests.
 
 When contributing to this repository, please first discuss the change you wish to make via issue,
-email, or any other method with the owners of this repository before making a change. 
+email, or any other method with the owners of this repository before making a change.
 
-## Code of Conduct
+== Code of Conduct
 
 In the interest of fostering an open and welcoming environment, we as
-contributors and maintainers pledge to making participation in our project and
+contributors and maintainers pledge to making participation in our project, and
 our community a harassment-free experience for everyone, regardless of age, body
 size, disability, ethnicity, gender identity and expression, level of experience,
 nationality, personal appearance, race, religion, or sexual identity and
 orientation.
 
-### Our Standards
+=== Our Standards
 
 Examples of behavior that contributes to creating a positive environment
 include:
@@ -75,11 +79,11 @@ advances
 * Trolling, insulting/derogatory comments, and personal or political attacks
 * Public or private harassment
 * Publishing others' private information, such as a physical or electronic
-  address, without explicit permission
+address, without explicit permission
 * Other conduct which could reasonably be considered inappropriate in a
-  professional setting
+professional setting
 
-### Our Responsibilities
+=== Our Responsibilities
 
 Project maintainers are responsible for clarifying the standards of acceptable
 behavior and are expected to take appropriate and fair corrective action in
@@ -91,22 +95,22 @@ that are not aligned to this Code of Conduct, or to ban temporarily or
 permanently any contributor for other behaviors that they deem inappropriate,
 threatening, offensive, or harmful.
 
-### Scope
+=== Scope
 
 This Code of Conduct applies both within project spaces and in public spaces
-when an individual is representing the project or its community. Examples of
+when an individual is representing the project or its community.Examples of
 representing a project or community include using an official project e-mail
 address, posting via an official social media account, or acting as an appointed
-representative at an online or offline event. Representation of a project may be
+representative at an online or offline event.Representation of a project may be
 further defined and clarified by project maintainers.
 
-### Enforcement
+=== Enforcement
 
 Project maintainers who do not follow or enforce the Code of Conduct in good
 faith may face temporary or permanent repercussions as determined by other
 members of the project's leadership.
 
-### Attribution
+=== Attribution
 
 This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 1.4,
 available at [http://contributor-covenant.org/version/1/4][version]

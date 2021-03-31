@@ -1,0 +1,127 @@
+= Java Time API - A Code kata
+:toc:
+:toclevels: 4
+
+image:assets/images/DukeTime.png[Java Duke Date Time Logo, 233, 420]
+
+Most, if not all Java developers need to rely on Java date and time libraries.
+
+== What is a Code-Kata
+
+A code-kata is a coding exercise that builds muscle memory by a practice of programming to arrive
+at a known solution.
+
+=== How does one go about with this code kata?
+
+The essence of the exercise (presentation material and code kata) is to demonstrate the
+usage patterns for the java API or functionality.
+
+This set of code katas rely on fixing broken tests. The tests may have multiple solutions, the
+intent is to learn and experiment.
+
+The project contains several JUnit tests that fail.
+
+==== Simple steps to use this kata
+
+. Run the test class(es).
+. One or more tests will fail with the test failure message.
+. Fix the failing tests by using `HINT` and `TODO` comments.
+. Repeat above steps until all tests pass.
+. Check the solutions to see if there are other ways to solve.
+(Remember, the solution may be less performant/optimal than yours)
+. Rinse and repeat (delete and checkout again, then back to Step 1) to build muscle memory.
+
+=== Mission
+> Your mission, should you choose to accept it, will be to fix the JUnit tests. This
+message will self-destruct in `**NaN**` minutes.
+
+== Requirements
+How to prepare for coding along
+
+This kata is developed as a Java maven project.Ensure that you have:
+
+. Apache Maven 3.6.x or above. _Tested with Apache Maven 3.6.3_.
+Link: https://maven.apache.org/download.cgi
+
+. JDK 11 or above. _Tested with OpenJDK 11_
+Link: http://jdk.java.net/11/
+
+. Your favorite Java IDE. _IntelliJ IDEA Ultimate was used to develop this kata_.
+
+== Project Structure
+
+The structure of the project:
+
+[source]
+----
+|____pom.xml
+|____README.md
+|
+|____src
+| |
+| |____test                    <------------------- Kata Tests
+| | |____java
+| |   |____none
+| |     |____cvg
+| |       |____datetime
+| |
+| |____main                    <------------------- Shared ErrorMessages & DemoClass
+| | |____java
+| |   |____none
+| |     |____cvg
+| |       |____datetime
+| |
+| |____solutions               <------------------- Solutions
+| | |____java
+| |   |____none
+| |     |____cvg
+| |       |____datetime
+----
+
+
+== Tests Included
+
+=== Java Date Time API
+
+The JUnit tests listed below are setup to utilize the Java Time API features.
+
+link:src/test/java/none/cvg/datetime/TestKata1InstantAndDateInterop.java[TestKata1InstantAndDateInterop.java]::  show interoperability between `java.util.Date`, and the newer `java.time.Instant`.
+
+link:src/test/java/none/cvg/datetime/TestKata2Clocks.java[TestKata2Clocks.java]:: show the usage of `java.time.Clock`.
+
+link:src/test/java/none/cvg/datetime/TestKata3LocalAndZonedDateTimes.java[TestKata3LocalAndZonedDateTimes.java]:: show the usage of `java.time.LocalDate`, `java.time.LocalTime`, `java.time.LocalDateTime` and `java.time.ZonedDateTime`.
+
+link:src/test/java/none/cvg/datetime/TestKata4PeriodsAndDurations.java[TestKata4PeriodsAndDurations.java]:: show the usage of DateTime ranges: Period, Duration tests.
+
+link:src/test/java/none/cvg/datetime/TestKata5DateTimePartials.java[TestKata5DateTimePartials.java]:: show the usage of DateTime partials: Month, MonthDay, Year, YearMonth and DayOfWeek tests.
+
+link:src/test/java/none/cvg/datetime/TestKata6StreamsInDateTime.java[TestKata6StreamsInDateTime.java]:: show the usage of DateTime in Java `stream()` lazy iterations.
+
+== Solutions
+
+.Solutions for each test:
+|===
+| Kata Test | Solution
+
+|link:src/test/java/none/cvg/datetime/TestKata1InstantAndDateInterop.java[TestKata1InstantAndDateInterop.java]
+|link:src/solutions/java/none/cvg/datetime/TestSolution1InstantAndDateInterop.java[TestSolution1InstantAndDateInterop.java]
+
+|link:src/test/java/none/cvg/datetime/TestKata2Clocks.java[TestKata2Clocks.java]
+|link:src/solutions/java/none/cvg/datetime/TestSolution2Clocks.java[TestSolution2Clocks.java]
+
+|link:src/test/java/none/cvg/datetime/TestKata3LocalAndZonedDateTimes.java[TestKata3LocalAndZonedDateTimes.java]
+|link:src/solutions/java/none/cvg/datetime/TestSolution3LocalAndZonedDateTimes.java[TestSolution3LocalAndZonedDateTimes.java]
+
+|link:src/test/java/none/cvg/datetime/TestKata4PeriodsAndDurations.java[TestKata4PeriodsAndDurations.java]
+|link:src/solutions/java/none/cvg/datetime/TestSolution4PeriodsAndDurations.java[TestSolution4PeriodsAndDurations.java]
+
+|link:src/test/java/none/cvg/datetime/TestKata5DateTimePartials.java[TestKata5DateTimePartials.java]
+|link:src/solutions/java/none/cvg/datetime/TestSolution5DateTimePartials.java[TestSolution5DateTimePartials.java]
+
+|link:src/test/java/none/cvg/datetime/TestKata6StreamsInDateTime.java[TestKata6StreamsInDateTime.java]
+|link:src/solutions/java/none/cvg/datetime/TestSolution6StreamsInDateTime.java[TestSolution6StreamsInDateTime.java]
+|===
+
+== Take Away
+
+The key take-away from this kata is a solid understanding of the Java Time API.
