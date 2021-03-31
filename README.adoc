@@ -1,8 +1,10 @@
 = java-katas
 
-image::https://travis-ci.org/c-guntur/java-katas.svg?branch=master[]
-image:https://img.shields.io/badge/License-MIT-lightsalmon.svg[]
-image:https://img.shields.io/badge/CodeKata-Java-blue.svg[]
+image::https://travis-ci.org/c-guntur/java-katas.svg?branch=master[link:"https://travis-ci.org/github/c-guntur/java-katas"]
+image:https://img.shields.io/badge/License-MIT-lightsalmon.svg[link:"LICENSE"]
+image:https://img.shields.io/badge/CodeKata-Java-blue.svg[link="https://github.com/topics/codekata"]
+
+image:https://img.shields.io/badge/License-Apache%202.0-blue.svg[link="http://www.apache.org/licenses/LICENSE-2.0"]
 
 image:JavaKatas.png[Java Katas]
 
