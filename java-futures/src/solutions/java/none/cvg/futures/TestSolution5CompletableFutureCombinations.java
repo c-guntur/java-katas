@@ -12,7 +12,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
@@ -33,8 +33,8 @@ public class TestSolution5CompletableFutureCombinations {
 
     private List<Integer> aList;
 
-    private ExecutorService executor;
-    private ExecutorService delayedExecutor;
+    private Executor executor;
+    private Executor delayedExecutor;
 
     @BeforeEach
     public void setup() {
@@ -44,7 +44,7 @@ public class TestSolution5CompletableFutureCombinations {
         executor = Executors.newFixedThreadPool(1);
 
         // Create a delayed executor from the executor with a delay of 50ms.
-        delayedExecutor = (ExecutorService) CompletableFuture.delayedExecutor(
+        delayedExecutor = CompletableFuture.delayedExecutor(
                 50, TimeUnit.MILLISECONDS, this.executor);
     }
 
@@ -53,8 +53,8 @@ public class TestSolution5CompletableFutureCombinations {
 
         aList = null;
 
-        executor.shutdown();
-        delayedExecutor.shutdown();
+        executor = null;
+        delayedExecutor = null;
     }
 
     @DisplayName("complete ALL of the CFs")
