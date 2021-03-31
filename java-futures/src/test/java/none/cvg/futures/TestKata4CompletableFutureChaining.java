@@ -26,14 +26,17 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestKata4CompletableFutureChaining {
 
-    private List<Integer> aList;
     private static final Integer SEVEN = 7;
     private static final Integer NINE = 9;
-    private CompletableFuture<Integer> chainedFuture;
+
+    private List<Integer> aList;
     private ExecutorService executor;
+
+    private CompletableFuture<Integer> chainedFuture;
 
     @BeforeEach
     public void setup() {
+
         aList = new ArrayList<>();
         aList.add(NINE);
 
@@ -44,6 +47,7 @@ public class TestKata4CompletableFutureChaining {
 
     @AfterEach
     public void teardown() {
+
         aList = null;
 
         chainedFuture = null;
@@ -468,7 +472,6 @@ public class TestKata4CompletableFutureChaining {
     @Order(13)
     public void thenCombine() {
 
-
         CompletableFuture<Integer> minusTwoCompletableFuture =
                 chainedFuture.thenApply(val -> val - 2);
 
@@ -522,7 +525,6 @@ public class TestKata4CompletableFutureChaining {
     @Order(14)
     public void thenCombineAsync() {
 
-
         CompletableFuture<Integer> minusTwoCompletableFuture =
                 chainedFuture.thenApply(val -> val - 2);
 
@@ -575,7 +577,6 @@ public class TestKata4CompletableFutureChaining {
     @Tag("TODO")
     @Order(13)
     public void thenCombineAsyncWithExecutor() {
-
 
         CompletableFuture<Integer> minusTwoCompletableFuture =
                 chainedFuture.thenApply(val -> val - 2);

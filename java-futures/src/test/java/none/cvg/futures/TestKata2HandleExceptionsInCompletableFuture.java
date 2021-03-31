@@ -34,7 +34,6 @@ public class TestKata2HandleExceptionsInCompletableFuture {
         CompletableFuture<String> failedFuture = CompletableFuture
                 .failedFuture(new DummyException(failureMessage));
 
-
         // TODO: Replace the below try-catch block with a whenComplete instance method
         //  on CompletableFuture, that can work with either a success return or a failure exception
         //  and accepts either via a BiConsumer.

@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -24,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestKata1SimpleCompletableFutureOperations {
 
-    private static final String REPLACE_THIS_STRING = "";
+    private static final String REPLACE_THIS = "";
 
     @BeforeEach
     public void setUp() {
@@ -118,7 +117,7 @@ public class TestKata1SimpleCompletableFutureOperations {
             //  • Use the instance method get() on CompletableFuture.
             //  • The get() method throws checked exceptions, which need to be caught and handled.
             assertEquals(successMessage,
-                    REPLACE_THIS_STRING,
+                    REPLACE_THIS,
                     "The completedFuture value should return the content of successMessage");
             // TODO:
             //  Replace the catch-block with right Exceptions thrown by the get().
@@ -148,7 +147,7 @@ public class TestKata1SimpleCompletableFutureOperations {
         // • java.util.concurrent.CancellationException
         // • java.util.concurrent.CompletionException
         assertEquals(successMessage,
-                REPLACE_THIS_STRING,
+                REPLACE_THIS,
                 "The completedFuture value should return the content of successMessage");
     }
 }

@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestSolution1SimpleCompletableFutureOperations {
 
-    private static final String REPLACE_THIS_STRING = "";
+    private static final String REPLACE_THIS = "";
 
     @BeforeEach
     public void setUp() {

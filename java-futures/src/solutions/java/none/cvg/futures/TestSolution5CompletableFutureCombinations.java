@@ -1,5 +1,6 @@
 package none.cvg.futures;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
@@ -11,7 +12,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
@@ -25,13 +26,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @DisplayName("CompletableFuture combinations to: ")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestSolution5CompletableFutureCombinations {
-// -- allOf
-// -- anyOf
-// -- runAfterBoth
-// -- thenAcceptBoth
-// -- runAfterEither
-// -- acceptEither
-// applyToEither
 
     private static final Integer SEVEN = 7;
     private static final Integer NINE = 9;
@@ -39,18 +33,28 @@ public class TestSolution5CompletableFutureCombinations {
 
     private List<Integer> aList;
 
-    private Executor executor;
-    private Executor delayedExecutor;
+    private ExecutorService executor;
+    private ExecutorService delayedExecutor;
 
     @BeforeEach
     public void setup() {
+
         aList = new ArrayList<>();
 
         executor = Executors.newFixedThreadPool(1);
 
         // Create a delayed executor from the executor with a delay of 50ms.
-        delayedExecutor = CompletableFuture.delayedExecutor(
+        delayedExecutor = (ExecutorService) CompletableFuture.delayedExecutor(
                 50, TimeUnit.MILLISECONDS, this.executor);
+    }
+
+    @AfterEach
+    public void teardown() {
+
+        aList = null;
+
+        executor.shutdown();
+        delayedExecutor.shutdown();
     }
 
     @DisplayName("complete ALL of the CFs")
@@ -230,8 +234,6 @@ public class TestSolution5CompletableFutureCombinations {
         //  • Create a new CompletableFuture<Void> by invoking a runAfterEither(?, ?) on addSeven.
         //  • For the first parameter use the addNineWithDelay
         //  • For the Runnable, add an integer FORTY_NINE to the aList
-//        CompletableFuture<Void> voidCompletableFuture =
-//                null;
         CompletableFuture<Void> voidCompletableFuture =
                 addSeven.runAfterEither(addNineWithDelay, () -> aList.add(FORTY_NINE));
 

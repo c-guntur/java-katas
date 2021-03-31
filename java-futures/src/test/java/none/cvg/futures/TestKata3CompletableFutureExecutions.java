@@ -25,12 +25,14 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestKata3CompletableFutureExecutions {
 
-    private List<Integer> aList;
     private static final Integer SEVEN = 7;
     private static final Integer NINE = 9;
 
+    private List<Integer> aList;
+
     @BeforeEach
     public void setup() {
+
         aList = new ArrayList<>();
         aList.add(NINE);
     }
