@@ -1,21 +1,17 @@
-# This workflow will build a Java project with Maven
-# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+name: Quality_Outreach
 
-name: Quality Outreach
-
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: workflow_dispatch
 
 jobs:
+
   build:
-    name: Quality Outreach ${{ matrix.java-version }}
+
+    name: Quality Outreach Java ${{ matrix.java-version }}
+    
     strategy:
       matrix:
         os: [ubuntu-latest]
-        java-version: [11, 14, 15, 16, latest-ea]
+        java-version: [14, 15, 16]
 
     runs-on: ${{ matrix.os }}
 
@@ -25,31 +21,31 @@ jobs:
     steps:
       - name: Git Checkout
         uses: actions/checkout@v2
-      - uses: actions/setup-java@v1
+      - name: Download Java version ${{ matrix.java-version }}
+        uses: sormuras/download-jdk@v1
         with:
           java-version: ${{ matrix.java-version }}
-      - name: Quality Outreach with ${{ matrix.java-version }}
-        run: mvn clean verify
+      - name: Quality Outreach with Java ${{ matrix.java-version }}
+        run: mvn verify
 
-  experimental:
-    name: Experimental Quality Outreach ${{ matrix.java-feature }}
+  projects:
+  
+    name: Quality Outreach Java ${{ matrix.project }}
+    
     strategy:
       matrix:
-        os: [ubuntu-latest]
-        java-feature: [Loom, Panama, Valhalla]
-
+        os: [ ubuntu-latest ] #[ macos-latest, windows-latest ]
+        project: [ Loom, Panama, Valhalla ]
+          
     runs-on: ${{ matrix.os }}
-
+    
     steps:
       - name: Git Checkout
         uses: actions/checkout@v2
-      - uses: sormuras/download-jdk@v1
-        id: jdk
+      - name: Download Java project ${{ matrix.project }}
+        uses: sormuras/download-jdk@v1
+        id: download-jdk
         with:
-          feature: ${{ matrix.java-feature }}
-      - name: Quality Outreach with ${{ matrix.java-feature }}
-        run: mvn clean verify
-
-
-
-
+          feature: ${{ matrix.project }}
+      - name: Quality Outreach with Java ${{ matrix.project }}
+        run: mvn verify
