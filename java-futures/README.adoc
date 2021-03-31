@@ -19,7 +19,34 @@ A special lookup for exception handling:
 
 * link:assets/docs/Exceptions.adoc[Exception Handling in CompletableFuture]
 
-include::../CodeKataMission.adoc[]
+== What is a Code-Kata
+
+A code-kata is a coding exercise that builds muscle memory by a practice of programming to arrive
+at a known solution.
+
+=== How does one go about with this code kata?
+
+The essence of the exercise (presentation material and code kata) is to demonstrate the
+usage patterns for the java API or functionality.
+
+This set of code katas rely on fixing broken tests. The tests may have multiple solutions, the
+intent is to learn and experiment.
+
+The project contains several JUnit tests that fail.
+
+==== Simple steps to use this kata
+
+. Run the test class(es).
+. One or more tests will fail with the test failure message.
+. Fix the failing tests by using `HINT` and `TODO` comments.
+. Repeat above steps until all tests pass.
+. Check the solutions to see if there are other ways to solve.
+(Remember, the solution may be less performant/optimal than yours)
+. Rinse and repeat (delete and checkout again, then back to Step 1) to build muscle memory.
+
+=== Mission
+> ***Your mission**, should you choose to accept it, will be to fix the JUnit tests. This
+message will self-destruct in* **NaN** *minutes*
 
 == Requirements
 How to prepare for coding along
@@ -60,7 +87,7 @@ The structure of the project:
 
 == Tests Included
 
-==== Java CompletableFuture
+=== Java CompletableFuture
 
 The JUnit tests listed below are set up to utilize the Java CompletableFuture API features.
 
@@ -69,8 +96,6 @@ link:src/test/java/none/cvg/futures/TestKata1SimpleCompletableFutureOperations.j
 
 link:src/test/java/none/cvg/futures/TestKata2HandleExceptionsInCompletableFuture.java[TestKata2HandleExceptionsInCompletableFuture.java]:: covers how CompletableFuture exceptions are handled. +
 Also check: link:assets/docs/Exceptions.adoc[Tabulated Exception Handling in CompletableFuture]
-
-include::assets/docs/Exceptions.adoc[]
 
 link:src/test/java/none/cvg/futures/TestKata3CompletableFutureExecutions.java[TestKata3CompletableFutureExecutions.java]:: covers some common executions in CompletableFuture.
 
