@@ -1,0 +1,12 @@
+
+.Exception Handling in Completable Futures
+|===
+|Type|`whenComplete()`|`handle()`|`exceptionally()`
+
+|Can use success result |Yes |Yes |*_No_*
+|Called if previous stage successful |Yes |Yes |*_No_*
+|Can use exception result |Yes |Yes |Yes
+|Called if previous stage has exception |Yes |Yes |Yes
+|Failure recovery |*_No_* |Yes |Yes
+|Return a different result |*_No_* |Yes |*_No_*
+|===

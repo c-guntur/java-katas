@@ -19,6 +19,7 @@
         <module>java-handles</module>
         <module>java-optional</module>
         <module>java-lambdas</module>
+        <module>java-futures</module>
     </modules>
 
     <properties>

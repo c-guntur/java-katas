@@ -1,0 +1,25 @@
+= Future
+:toc:
+
+== What is a Future
+
+Introduced in Java 5 (2004).
+
+A link:https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/concurrent/Future.html[`java.util.concurrent.Future`] is a placeholder for a result of a computation task that hasn't finished yet.
+
+Once the task completes, the Future holds the result.
+
+== Operations on a Future
+
+The following operations can be performed on a Future:
+
+.Future operations
+[width="99%", options="header"]
+|===
+|Method name |Description
+
+|`*cancel*` |Attempts to cancel execution of this task.
+|`*get*`|Waits if necessary for the computation to complete, and then retrieves its result, with or without a timeout parameter.
+|`*isCancelled*`|Check if the Future has been canceled, prior to normal completion.
+|`*isDone*`|Check if the Future completed normally.
+|===

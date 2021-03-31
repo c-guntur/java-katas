@@ -1,0 +1,73 @@
+= CompletionStage
+:toc:
+
+== What is CompletionStage
+
+Introduced in Java 8 (2014).
+
+A link:https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/concurrent/CompletionStage.html[`java.util.concurrent.CompletionState`] interface represents an asynchronous or synchronous computation task.
+
+This task performs an action or computes a value when another CompletionStage completes.
+
+There are a few classifications that are identifiable via patterns in the method's name.
+
+== Classifications
+
+=== Core methods
+
+Types of computation determined by method name pattern
+
+.Core Methods
+[width="99%", options="header"]
+|===
+|Pattern in method name |Description
+
+|`*apply/Apply*`|https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/function/Function.html[Function] computation on result or value of the CompletionStage
+|`*accept/Accept*`|https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/function/Consumer.html[Consumer] computation on result or value of the CompletionStage
+|`*run/Run*`|https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/lang/Runnable.html[Runnable] computation
+|===
+
+=== Action methods
+
+Actions performed determined by method name pattern
+
+.Action methods
+[width="99%", options="header"]
+|===
+|Pattern in method name |Description
+
+|`*Compose*`|Similar to apply, returns a new CompletionStage after the completion of the current one, thus allowing pipelines
+|`*Combine*`|Combine results of two completion stages into a BiFunction and returns a new CompletionStage
+|`*exceptionally*`|handle any exception via a Function that returns a CompletedStage, successful completion is returned as the value of CompletionStage
+|`*whenComplete*`|handle  either successful result or exception passed as a BiConsumer and returns a new CompletionStage
+|`*handle*`|handle either successful result or exception passed as a BiFunction and returns a new CompletionStage
+|===
+
+=== Synchronicity
+
+Synchronicity of the stage is either Sync or Async
+
+.Synchronicity
+[width="99%", options="header"]
+|===
+|Pattern in method name |Description
+
+|*<nothing>*|synchronous
+|`*Async*`|asynchronous
+|===
+
+=== Post Execution
+
+Actions to perform post-execution
+
+.Post Execution
+[width="99%", options="header"]
+|===
+|Pattern in method name |Description
+
+|`*then*`|a single stage
+|`*Both*`|both of two stages
+|`*Either*`|either of two stages
+|===
+
+

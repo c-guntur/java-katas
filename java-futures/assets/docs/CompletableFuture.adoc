@@ -1,0 +1,91 @@
+= CompletableFuture
+:toc:
+
+== What is a CompletableFuture
+
+Introduced in Java 8 (2014).
+
+A link:https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/concurrent/CompletableFuture.html[`java.util.concurrent.CompletableFuture`] is a complete implementation of *both* `Future` and `CompletionStage`.
+
+CompletableFuture provides static methods as means to execute the tasks.
+
+CompletableFuture allows for chaining and combining outcomes from multiple other CompletableFutures.
+
+== Classifications
+
+.Operations return type
+[width="99%", options="header"]
+|===
+|Pattern in method name |Description
+
+|`*run/Run*`|Perform a task without a return value, using a https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/lang/Runnable.html[Runnable].
+|`*supply/Supply*`|Perform a task that returns a value, using a https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/function/Supplier.html[Supplier].
+|===
+
+=== Synchronicity
+
+Synchronicity is either Sync or Async
+
+.Synchronicity
+[width="99%", options="header"]
+|===
+|Pattern in method name |Description
+
+|*<nothing>*| *_synchronous_*, performed by the thread running the CompletableFuture.
+|`*Async*`| *_asynchronous_*, performed by default by the ForkJoinPool.commonPool unless an executor is provided.
+|===
+
+=== Results
+
+There are two methods to retrieve the results.
+
+Both *_wait for the CompletableFuture to complete_*, then return the result if successful.
+
+Unsuccessful outcomes are due to cancellation, exceptional outcomes and interruptions.
+
+.Results
+[width="99%", options="header"]
+|===
+|Method name |Description
+
+|`*get*`|Return the result. Throws *_checked exceptions_* when unsuccessful.
+|`*join*`|Return the result. Throws *_unchecked runtime exceptions_* when unsuccessful.
+|===
+
+=== Multiple CompletableFutures
+
+.Chaining and Combining
+[width="99%", options="header"]
+|===
+|Pattern in method name |Description
+
+2+| Chaining
+|`*thenCompose**`| Chain two CompletableFuture, the second executed *_after_* the first using the result of the first as a value in a Function, *_returning a CompletableFuture_*.
+|`*thenCombine**`| Chain two CompletableFuture, *_when both are completed_* using the result of both as values in a BiFunction, *_returning a CompletableFuture_*.
+2+| Combining All
+|`*thenAcceptBoth**`| Chain two CompletableFuture, *_when both are completed_* using the result of both as values in a BiConsumer, *_returning a value_*.
+|`*runAfterBoth**`| Chain two CompletableFuture, *_when both are completed_* run a Runnable, *_returning a CompletableFuture<Void>_*.
+|`*allOf*`| Await the completion of *_all of_* a list of CompletableFuture instances, *_returning a CompletableFuture<Void>_*.
+2+| Combining Either
+|`*applyToEither**`| Accept the completion of the current or other CompletableFuture using the value in a Function, *_returning a CompletableFuture_*.
+|`*acceptEither**`| Accept the completion of the current or other CompletableFuture using the value in a Consumer, *_returning a CompletableFuture_*.
+|`*runAfterEither**`| Accept the completion of the current or other CompletableFuture, then run a Runnable, *_returning a CompletableFuture<Void>_*.
+|`*anyOf*`| Await the completion of *_any one of_* a list of CompletableFuture instances, *_returning a CompletableFuture<Object>_*.
+|===
+
+== Understanding Pipelines in CompletableFuture
+
+CompletionFuture has Stages.
+
+Each Stage may produce an output or signal when completed successfully.
+Any stage can fail, leading to an exception. The exception can be handled.
+A handling of an exception may cause the pipeline to be repaired or may be fatal enough to fail.
+
+[source]
+----
+                   /----S--o--S--o--S--------------S--o--S--o----SUCCESS
+                  /                 \              /
+CompletableFuture                    |            |
+                  \                   \          /
+                   \-------------------E--h--E--h--E--h----------FAILURE
+----
