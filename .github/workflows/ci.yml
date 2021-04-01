@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  ci:
+    name: "JDK ${{ matrix.java }} on ${{ matrix.os }}"
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ ubuntu-latest ] # [ ubuntu-latest, macos-latest, windows-latest ]
+        java: [ 16 ] # [ 17-ea, 16, 15 ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: 'Check out repository'
+        uses: actions/checkout@v2
+      - name: 'Set up JDK'
+        uses: actions/setup-java@v1
+        with:
+          java-version: ${{ matrix.java }}
+      - name: 'Build with Maven'
+        run: mvn verify
