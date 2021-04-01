@@ -1,6 +1,8 @@
 name: CI
 
 on:
+  push:
+  pull_request:
   workflow_dispatch:
 
 jobs:
@@ -20,4 +22,4 @@ jobs:
         with:
           java-version: ${{ matrix.java }}
       - name: 'Build with Maven'
-        run: mvn verify
+        run: mvn --batch-mode --no-transfer-progress verify
