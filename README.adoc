@@ -1,8 +1,9 @@
 = java-katas
 
-image::https://travis-ci.org/c-guntur/java-katas.svg?branch=master[link="https://travis-ci.org/github/c-guntur/java-katas"]
+image::https://github.com/c-guntur/java-katas/actions/workflows/ci.yml/badge.svg[link="https://github.com/c-guntur/java-katas/actions/workflows/ci.yml"]
 image:https://img.shields.io/badge/License-MIT-lightsalmon.svg[link="LICENSE"]
 image:https://img.shields.io/badge/CodeKata-Java-blue.svg[link="https://github.com/topics/codekata"]
+
 
 image:JavaKatas.png[Java Katas]
 
