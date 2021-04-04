@@ -575,7 +575,7 @@ public class TestSolution4CompletableFutureChaining {
     @DisplayName("5a. thenCombineAsync with an executor")
     @Test
     @Tag("PASSING")
-    @Order(13)
+    @Order(15)
     public void thenCombineAsyncWithExecutor() {
 
         CompletableFuture<Integer> minusTwoCompletableFuture =
