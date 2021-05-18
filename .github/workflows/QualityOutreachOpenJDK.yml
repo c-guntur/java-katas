@@ -10,7 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ ubuntu-latest ]
-        java: [ 17-ea, 16, 15, 14 ]
+        java: [ 17, 16, 15, 14 ]
     runs-on: ${{ matrix.os }}
     steps:
       - name: 'Check out repository'
