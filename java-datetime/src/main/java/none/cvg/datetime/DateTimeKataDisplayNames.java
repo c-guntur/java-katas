@@ -33,6 +33,9 @@ public class DateTimeKataDisplayNames extends DisplayNameGenerator.Standard {
     public String generateDisplayNameForMethod(Class<?> aClass, Method method) {
 
         String methodName = method.getName();
+        if(methodName.startsWith("verify")) {
+            return camelToText(methodName.substring(6));
+        }
         return camelToText(methodName);
     }
 
