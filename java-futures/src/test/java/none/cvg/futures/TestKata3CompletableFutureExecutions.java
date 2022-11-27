@@ -63,7 +63,7 @@ public class TestKata3CompletableFutureExecutions {
         voidCompletableFuture.join();
 
         assertNotNull(voidCompletableFuture,
-                "The completedFuture should be null");
+                "The completedFuture should not be null");
 
         assertEquals(2,
                 aList.size(),
@@ -99,7 +99,7 @@ public class TestKata3CompletableFutureExecutions {
         voidCompletableFuture.join();
 
         assertNotNull(voidCompletableFuture,
-                "The completedFuture should be null");
+                "The completedFuture should not be null");
 
         assertEquals(2,
                 aList.size(),
@@ -132,7 +132,7 @@ public class TestKata3CompletableFutureExecutions {
         suppliedCompletableFuture.join();
 
         assertNotNull(suppliedCompletableFuture,
-                "The completedFuture should be null");
+                "The completedFuture should not be null");
 
         assertEquals(NINE,
                 suppliedCompletableFuture.get(),
@@ -168,7 +168,7 @@ public class TestKata3CompletableFutureExecutions {
         suppliedCompletableFuture.join();
 
         assertNotNull(suppliedCompletableFuture,
-                "The completedFuture should be null");
+                "The completedFuture should not be null");
 
         assertEquals(NINE,
                 suppliedCompletableFuture.get(),
