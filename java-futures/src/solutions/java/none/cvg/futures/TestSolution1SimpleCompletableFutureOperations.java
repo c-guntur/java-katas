@@ -49,7 +49,7 @@ public class TestSolution1SimpleCompletableFutureOperations {
                 CompletableFuture.completedFuture(successMessage);
 
         assertNotNull(completedFuture,
-                "The completedFuture should be null");
+                "The completedFuture should not be null");
 
         assertTrue(completedFuture instanceof CompletableFuture,
                 "The completedFuture should be an instance of CompletableFuture");
@@ -74,7 +74,7 @@ public class TestSolution1SimpleCompletableFutureOperations {
                 CompletableFuture.failedFuture(new RuntimeException(exceptionMessage));
 
         assertNotNull(failedFuture,
-                "The completedFuture should be null");
+                "The completedFuture should not be null");
 
         assertTrue(failedFuture instanceof CompletableFuture,
                 "The completedFuture should be an instance of CompletableFuture");

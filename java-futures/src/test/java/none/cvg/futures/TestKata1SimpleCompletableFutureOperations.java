@@ -48,7 +48,7 @@ public class TestKata1SimpleCompletableFutureOperations {
                 null;
 
         assertNotNull(completedFuture,
-                "The completedFuture should be null");
+                "The completedFuture should not be null");
 
         assertTrue(completedFuture instanceof CompletableFuture,
                 "The completedFuture should be an instance of CompletableFuture");
@@ -73,7 +73,7 @@ public class TestKata1SimpleCompletableFutureOperations {
                 null;
 
         assertNotNull(failedFuture,
-                "The completedFuture should be null");
+                "The completedFuture should not be null");
 
         assertTrue(failedFuture instanceof CompletableFuture,
                 "The completedFuture should be an instance of CompletableFuture");
