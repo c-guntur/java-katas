@@ -9,12 +9,11 @@ image:JavaKatas.png[Java Katas]
 
 One repo to rule them all. Java code katas - using JUnit5
 
-The java-katas is a code repository for learning various Java features.
+The java-katas repository is a code repository for learning various Java features.
 
 == What is a kata (a code kata) ?
 
-From http://wikipedia: Kata originally were teaching and training methods by which successful combat techniques were preserved and passed on. Practicing kata allowed a company of persons to engage in a struggle, using a systematic approaches, rather by practicing in a repetitive manner the learner develops the ability to execute those techniques and movements in a natural, reflex-like manner. Systematic practice does not mean permanently rigid. The goal is to internalize the movements and techniques of a kata; so they can be executed and adapted under different circumstances, without thought or hesitation. A novice’s actions will look uneven and difficult, while a master’s appear simple and smooth.
-
+From http://en.wikipedia.org/wiki/Kata: Kata originally were teaching and training methods by which successful combat techniques were preserved and passed on. Practicing kata allowed a company of persons to engage in a struggle, using a systematic approach, through repetitive practice, the learner develops
 === What is a code kata?
 
 From http://codekata.com: Code Kata is an attempt to bring the element of practice to software development. A kata is an exercise in karate where you repeat a form many, many times, making little improvements in each. The intent behind code kata is similar. Each is a short exercise (perhaps 30 minutes to an hour long). Some involve programming, and can be coded in many ways. Some are open-ended, and involve thinking about the issues behind programming. These are unlikely to have a single correct answer.
@@ -25,7 +24,7 @@ Code katas were first introduced by Dave Thomas and are a great tool to practice
 
 This Git repo is a collection of several code katas about features, utilities and APIs in Java language. 
 
-The general structure of each project is a maven quickstart project with a pom.xml, a src directory that contains at least two directories. Code Katas are available under the src/test/java while solutions are under src/solutions/java under each module. The code katas typically contain failing tests with TODO markers that need to be fixed in order to fix the test, 
+The general structure of each project is a maven quickstart project with a pom.xml and a src directory that contains at least two subdirectories. Code Katas are available under the src/test/java while solutions are under src/solutions/java under each module. The code katas typically contain failing tests with TODO markers that need to be fixed in order to fix the test, 
 
 **Remember, the src/solutions may not be the perfect way to solve the kata, maybe a solution you come up with is better**. Feel free to submit a pull request if you think you have a better solution than the one you find.
 
